@@ -34,12 +34,12 @@ jobs:
           python scripts/update_repo.py
 
       - name: Commit updated JSON
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+  run: |
+    git config user.name "github-actions"
+    git config user.email "github-actions@github.com"
 
-          git add apps.json
+    git add apps.json
 
-          git diff --cached --quiet || git commit -m "Auto update app repository"
+    git diff --cached --quiet || git commit -m "Auto update app repository"
 
-          git push
+    git push origin HEAD:${{ github.event.repository.default_branch }}
