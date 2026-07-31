@@ -40,6 +40,7 @@ from repository import (
 REPO = os.environ["GITHUB_REPOSITORY"]
 
 
+
 def calculate_sha256(file_path):
 
     sha = hashlib.sha256()
@@ -111,9 +112,7 @@ def process_app(
     )
 
 
-    bundle = info[
-        "bundleIdentifier"
-    ]
+    bundle = info["bundleIdentifier"]
 
 
     icon_file = None
@@ -178,317 +177,53 @@ def process_app(
     )
 
 
-    if app:
+    app_data = {
 
+        "name":
+            custom.get(
+                "name",
+                info["name"]
+            ),
 
-        versions = app.get(
-            "versions",
-            []
-        )
+        "bundleIdentifier":
+            bundle,
 
+        "developerName":
+            developer_name,
 
-        versions.insert(
-            0,
-            version_entry
-        )
+        "version":
+            info["version"],
 
+        "versionDate":
+            datetime.utcnow().strftime(
+                "%Y-%m-%d"
+            ),
 
-        app["versions"] = versions
+        "versionDescription":
+            release_notes,
 
+        "downloadURL":
+            asset["browser_download_url"],
 
-        update_app(
-            app,
-            {
-
-                "name":
-                    custom.get(
-                        "name",
-                        info["name"]
-                    ),
-
-                "bundleIdentifier":
-                    bundle,
-
-                "developerName":
-                    developer_name,
-
-                "version":
-                    info["version"],
-
-                "versionDate":
-                    datetime.utcnow().strftime(
-                        "%Y-%m-%d"
-                    ),
-
-                "versionDescription":
-                    release_notes,
-
-                "downloadURL":
-                    asset["browser_download_url"],
-
-                "size":
-                    asset["size"],
-
-                "sha256":
-                    sha256,
-
-                "iconURL":
-                    get_icon_url(
-                        icon_file,
-                        REPO
-                    ),
-
-                "screenshots":
-                    screenshot_urls
-            }
-        )
-
-
-    else:
-
-
-        new_app = {
-
-            "name":
-                custom.get(
-                    "name",
-                    info["name"]
-                ),
-
-            "bundleIdentifier":
-                bundle,
-
-            "developerName":
-                developer_name,
-
-            "category":
-                custom.get(
-                    "category",
-                    ""
-                ),
-
-            "localizedDescription":
-                custom.get(
-                    "localizedDescription",
-                    ""
-                ),
-
-            "version":
-                info["version"],
-
-            "versionDate":
-                datetime.utcnow().strftime(
-                    "%Y-%m-%d"
-                ),
-
-            "versionDescription":
-                release_notes,
-
-            "downloadURL":
-                asset["browser_download_url"],
-
-            "size":
-                asset["size"],
-
-            "sha256":
-                sha256,
-
-            "screenshots":
-                screenshot_urls,
-
-            "versions":
-                [
-                    version_entry
-                ]
-        }
-
-
-        if icon_file:
-
-            new_app["iconURL"] = get_icon_url(
-                icon_file,
-                REPO
-            )
-
-
-        create_app(
-            repository,
-            new_app
-        )
-
-
-
-def main():
-
-    print(
-        "Starting AshStore v2 update"
-    )
-
-
-    release = get_latest_release()
-
-
-    notes = get_release_notes(
-        release
-    )
-
-
-    repository = load_repository()
-
-    config = load_config()
-
-
-    assets = get_ipa_assets(
-        release
-    )
-
-
-    for asset in assets:
-
-        process_app(
-            asset,
-            notes,
-            repository,
-            config
-        )
-
-
-    settings = config.get(
-        "settings",
-        {}
-    )
-
-
-    if settings.get(
-        "sortApps",
-        True
-    ):
-
-        sort_apps(
-            repository
-        )
-
-
-    limit = settings.get(
-        "versionHistoryLimit",
-        10
-    )
-
-
-    for app in repository["apps"]:
-
-        trim_versions(
-            app,
-            limit
-        )
-
-
-    save_repository(
-        repository
-    )
-
-
-    print(
-        "AshStore update completed"
-    )
-
-
-
-if __name__ == "__main__":
-
-    main()
         "size":
             asset["size"],
 
         "sha256":
             sha256,
 
-        "description":
-            notes
+        "iconURL":
+            get_icon_url(
+                icon_file,
+                REPO
+            ),
+
+        "screenshots":
+            screenshot_urls
     }
 
 
 
-def process_app(
-        asset,
-        release_notes,
-        repository,
-        config
-):
-
-    print(
-        "Processing:",
-        asset["name"]
-    )
-
-
-    ipa_path = download_asset(
-        asset
-    )
-
-
-    info = read_ipa_info(
-        ipa_path
-    )
-
-
-    bundle = info[
-        "bundleIdentifier"
-    ]
-
-
-    icon_file = None
-
-
-    icon = find_icon(
-        info["appPath"],
-        info["plist"]
-    )
-
-
-    if icon:
-
-        icon_file = save_icon(
-            icon,
-            bundle
-        )
-
-
-    sha256 = calculate_sha256(
-        ipa_path
-    )
-
-
-    custom = get_app_config(
-        bundle
-    )
-
-
-    app = find_app(
-        repository,
-        bundle
-    )
-
-
-    version_entry = build_version_entry(
-        info,
-        asset,
-        release_notes,
-        sha256
-    )
-
-
-    developer_name = custom.get(
-        "developerName",
-        info.get(
-            "developerName",
-            "Unknown"
-        )
-    )
-
-
     if app:
-
 
         versions = app.get(
             "versions",
@@ -507,65 +242,14 @@ def process_app(
 
         update_app(
             app,
-            {
-
-                "name":
-                    custom.get(
-                        "name",
-                        info["name"]
-                    ),
-
-                "bundleIdentifier":
-                    bundle,
-
-                "developerName":
-                    developer_name,
-
-                "version":
-                    info["version"],
-
-                "versionDate":
-                    datetime.utcnow().strftime(
-                        "%Y-%m-%d"
-                    ),
-
-                "versionDescription":
-                    release_notes,
-
-                "downloadURL":
-                    asset["browser_download_url"],
-
-                "size":
-                    asset["size"],
-
-                "sha256":
-                    sha256,
-
-                "iconURL":
-                    get_icon_url(
-                        icon_file,
-                        REPO
-                    )
-            }
+            app_data
         )
 
 
     else:
 
 
-        new_app = {
-
-            "name":
-                custom.get(
-                    "name",
-                    info["name"]
-                ),
-
-            "bundleIdentifier":
-                bundle,
-
-            "developerName":
-                developer_name,
+        app_data.update({
 
             "category":
                 custom.get(
@@ -579,44 +263,16 @@ def process_app(
                     ""
                 ),
 
-            "version":
-                info["version"],
-
-            "versionDate":
-                datetime.utcnow().strftime(
-                    "%Y-%m-%d"
-                ),
-
-            "versionDescription":
-                release_notes,
-
-            "downloadURL":
-                asset["browser_download_url"],
-
-            "size":
-                asset["size"],
-
-            "sha256":
-                sha256,
-
             "versions":
                 [
                     version_entry
                 ]
-        }
-
-
-        if icon_file:
-
-            new_app["iconURL"] = get_icon_url(
-                icon_file,
-                REPO
-            )
+        })
 
 
         create_app(
             repository,
-            new_app
+            app_data
         )
 
 
@@ -654,6 +310,7 @@ def main():
             repository,
             config
         )
+
 
 
     settings = config.get(
