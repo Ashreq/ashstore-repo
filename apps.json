@@ -3,5 +3,30 @@
   "identifier": "com.github.ashreq.ashstore-repo",
   "subtitle": "Custom apps and tweaks",
   "description": "A personal repository for enhanced applications.",
-  "apps": []
+  "apps": [
+    {
+      "name": "Infuse Plus",
+      "bundleIdentifier": "com.firecore.infuse",
+      "developerName": "Firecore",
+      "category": "Media",
+      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
+      "version": "8.5",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.2/InfusePlus_v8.5.ipa",
+      "size": 98499773,
+      "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+      "versions": [
+        {
+          "version": "8.5",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.2/InfusePlus_v8.5.ipa",
+          "size": 98499773,
+          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse.png"
+    }
+  ]
 }
