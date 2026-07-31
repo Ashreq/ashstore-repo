@@ -36,14 +36,21 @@
       "name": "Facebook Glow",
       "bundleIdentifier": "com.facebook.Facebook",
       "developerName": "Meta Platforms, Inc.",
-      "version": "1.3.1",
+      "version": "572.0.0",
       "versionDate": "2026-07-31",
-      "versionDescription": "Glow FB version 1.3.1 release",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Facebook/Glow_FB_v1.3.1.ipa",
+      "versionDescription": "Facebook glow",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Facebook-V.522/Glow_FB_v1.3.1.ipa",
       "localizedDescription": "Modified Facebook application featuring dark mode and privacy customizations.",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/refs/heads/main/facebook.png",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook.png",
       "size": 207255574,
       "versions": [
+        {
+          "version": "572.0.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Facebook-V.522/Glow_FB_v1.3.1.ipa",
+          "size": 207255574,
+          "description": "Facebook glow"
+        },
         {
           "version": "1.3.1",
           "date": "2026-07-31",
