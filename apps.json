@@ -33,6 +33,30 @@
       ]
     },
     {
+      "name": "FotMob",
+      "bundleIdentifier": "com.mobilefootie.fotmobpro",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "1238.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test6/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+      "size": 73698085,
+      "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+      "versions": [
+        {
+          "version": "1238.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test6/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+          "size": 73698085,
+          "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/v2-development/icons/com_mobilefootie_fotmobpro.png"
+    },
+    {
       "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
       "developerName": "Firecore",
