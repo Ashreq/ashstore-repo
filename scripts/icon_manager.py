@@ -137,5 +137,5 @@ def get_icon_url(filename, repository):
 
     return (
         "https://raw.githubusercontent.com/"
-        f"{repository}/v2-development/icons/{filename}"
+        f"{repository}/main/icons/{filename}"
     )
