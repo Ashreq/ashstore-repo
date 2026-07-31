@@ -10,18 +10,18 @@
       "developerName": "Firecore",
       "version": "8.5",
       "versionDate": "2026-07-31",
-      "versionDescription": "Version 8.5 release",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Infuse-V8.5.1/InfusePlus_v8.5.ipa",
+      "versionDescription": "No release notes available",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v2-test-2/InfusePlus_2.6.ipa",
       "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/refs/heads/main/infuse-icon-dark.png",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse.png",
       "size": 98499773,
       "versions": [
         {
           "version": "8.5",
           "date": "2026-07-31",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Infuse-V8.5.1/InfusePlus_v8.5.ipa",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v2-test-2/InfusePlus_2.6.ipa",
           "size": 98499773,
-          "description": "Version 8.5 release"
+          "description": "No release notes available"
         },
         {
           "version": "2.6.0",
