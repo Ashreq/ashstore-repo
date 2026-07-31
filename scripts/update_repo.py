@@ -35,7 +35,6 @@ from repository import (
 REPO = os.environ["GITHUB_REPOSITORY"]
 
 
-
 def calculate_sha256(file_path):
 
     sha = hashlib.sha256()
@@ -46,9 +45,7 @@ def calculate_sha256(file_path):
             lambda: file.read(4096),
             b""
         ):
-
             sha.update(chunk)
-
 
     return sha.hexdigest()
 
@@ -155,6 +152,15 @@ def process_app(
     )
 
 
+    developer_name = custom.get(
+        "developerName",
+        info.get(
+            "developerName",
+            "Unknown"
+        )
+    )
+
+
     if app:
 
 
@@ -185,6 +191,9 @@ def process_app(
 
                 "bundleIdentifier":
                     bundle,
+
+                "developerName":
+                    developer_name,
 
                 "version":
                     info["version"],
@@ -230,13 +239,7 @@ def process_app(
                 bundle,
 
             "developerName":
-    custom.get(
-        "developerName",
-        info.get(
-            "developerName",
-            "Unknown"
-        )
-    ),
+                developer_name,
 
             "category":
                 custom.get(
@@ -293,7 +296,6 @@ def process_app(
 
 
 def main():
-
 
     print(
         "Starting AshStore v2 update"
