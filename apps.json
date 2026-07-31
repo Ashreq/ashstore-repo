@@ -89,7 +89,7 @@
           "date": "2026-07-31",
           "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Infuse-V8.5.1/InfusePlus_v8.5.ipa",
           "size": 98499773,
-          "description": "Version 8.5 release"
+          "description": "No release notes available"
         },
         {
           "version": "2.6.0",
@@ -145,6 +145,27 @@
         }
       ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube.png"
+    },
+    {
+      "name": "FotMob",
+      "bundleIdentifier": "com.mobilefootie.fotmobpro",
+      "developerName": "Unknown",
+      "version": "1238.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "No release notes available",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test5/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+      "localizedDescription": "FotMob application",
+      "size": 73698085,
+      "versions": [
+        {
+          "version": "1238.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test5/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+          "size": 73698085,
+          "description": "No release notes available"
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro.png"
     }
   ]
 }
