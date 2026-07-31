@@ -41,10 +41,18 @@
       "version": "1238.0",
       "versionDate": "2026-07-31",
       "versionDescription": "",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test6/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test7/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
       "size": 73698085,
       "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
       "versions": [
+        {
+          "version": "1238.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test7/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+          "size": 73698085,
+          "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+          "description": ""
+        },
         {
           "version": "1238.0",
           "date": "2026-07-31",
@@ -54,7 +62,7 @@
           "description": ""
         }
       ],
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/v2-development/icons/com_mobilefootie_fotmobpro.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro.png"
     },
     {
       "name": "Infuse Plus",
@@ -92,6 +100,30 @@
         }
       ],
       "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663"
+    },
+    {
+      "name": "Instagram",
+      "bundleIdentifier": "com.burbn.instagram",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "439.0.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test7/RyukGram_1.3.3_IG439.0.0.ipa",
+      "size": 333529723,
+      "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
+      "versions": [
+        {
+          "version": "439.0.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test7/RyukGram_1.3.3_IG439.0.0.ipa",
+          "size": 333529723,
+          "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_burbn_instagram.png"
     },
     {
       "name": "YouTube",
