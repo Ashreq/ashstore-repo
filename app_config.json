@@ -3,20 +3,25 @@
     "versionHistoryLimit": 10,
     "sortApps": true,
     "extractIcons": true,
-    "calculateSHA256": true
+    "calculateSHA256": true,
+    "releaseNotes": true
   },
 
   "apps": {
     "com.firecore.infuse": {
+      "name": "Infuse Plus",
       "developerName": "Firecore",
-      "localizedDescription": "Enhanced Infuse player",
-      "category": "Media"
+      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
+      "category": "Media",
+      "featured": true
     },
 
     "com.facebook.Facebook": {
+      "name": "Facebook Glow",
       "developerName": "Meta Platforms, Inc.",
-      "localizedDescription": "Facebook Glow",
-      "category": "Social"
+      "localizedDescription": "Modified Facebook application featuring dark mode and privacy customizations.",
+      "category": "Social",
+      "featured": true
     }
   }
 }
