@@ -5,13 +5,14 @@ import shutil
 ICON_FOLDER = "icons"
 
 
-
 def find_icon(app_path, plist):
+
+    if not os.path.exists(app_path):
+        return None
+
 
     icon_names = []
 
-
-    # Modern iOS apps
 
     bundle_icons = plist.get(
         "CFBundleIcons",
@@ -33,8 +34,6 @@ def find_icon(app_path, plist):
     )
 
 
-    # Older iOS apps
-
     icon_names.extend(
         plist.get(
             "CFBundleIconFiles",
@@ -42,8 +41,6 @@ def find_icon(app_path, plist):
         )
     )
 
-
-    # Common fallback names
 
     icon_names.extend([
         "AppIcon60x60@3x.png",
@@ -53,12 +50,9 @@ def find_icon(app_path, plist):
     ])
 
 
-    if not os.path.exists(app_path):
-    return None
-
-files = os.listdir(
-    app_path
-)
+    files = os.listdir(
+        app_path
+    )
 
 
     for icon in icon_names:
@@ -81,6 +75,18 @@ files = os.listdir(
                 )
 
 
+    # fallback: search any png icon
+
+    for file in files:
+
+        if file.lower().endswith(".png"):
+
+            return os.path.join(
+                app_path,
+                file
+            )
+
+
     return None
 
 
@@ -88,7 +94,6 @@ files = os.listdir(
 def save_icon(icon_path, bundle_id):
 
     if not icon_path:
-
         return None
 
 
@@ -127,11 +132,10 @@ def save_icon(icon_path, bundle_id):
 def get_icon_url(filename, repository):
 
     if not filename:
-
         return None
 
 
     return (
         "https://raw.githubusercontent.com/"
-        f"{repository}/main/icons/{filename}"
+        f"{repository}/v2-development/icons/{filename}"
     )
