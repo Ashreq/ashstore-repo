@@ -230,10 +230,13 @@ def process_app(
                 bundle,
 
             "developerName":
-                custom.get(
-                    "developerName",
-                    "Unknown"
-                ),
+    custom.get(
+        "developerName",
+        info.get(
+            "developerName",
+            "Unknown"
+        )
+    ),
 
             "category":
                 custom.get(
