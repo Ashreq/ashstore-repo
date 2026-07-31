@@ -1,0 +1,22 @@
+{
+  "settings": {
+    "versionHistoryLimit": 10,
+    "sortApps": true,
+    "extractIcons": true,
+    "calculateSHA256": true
+  },
+
+  "apps": {
+    "com.firecore.infuse": {
+      "developerName": "Firecore",
+      "localizedDescription": "Enhanced Infuse player",
+      "category": "Media"
+    },
+
+    "com.facebook.Facebook": {
+      "developerName": "Meta Platforms, Inc.",
+      "localizedDescription": "Facebook Glow",
+      "category": "Social"
+    }
+  }
+}
