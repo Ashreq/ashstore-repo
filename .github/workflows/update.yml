@@ -7,67 +7,50 @@ on:
 permissions:
   contents: write
 
-
 jobs:
-
   update-store:
 
     runs-on: ubuntu-latest
-
 
     steps:
 
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: v2-development
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
-
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
+      - name: Run AshStore v2 updater
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python scripts/update_repo.py
 
-      - - name: Run AshStore v2 updater
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    GITHUB_REPOSITORY: ${{ github.repository }}
-  run: |
-    python scripts/update_repo.py
-
-
-      - name: Validate JSON
+      - name: Validate apps.json
         run: |
           python -m json.tool apps.json > /dev/null
 
-
-      - name: Commit changes
+      - name: Commit updates
         run: |
-
           git config user.name "github-actions"
-
           git config user.email "github-actions@github.com"
-
 
           git add apps.json icons/
 
-
           if git diff --cached --quiet; then
-
             echo "No changes"
-
           else
-
             git commit -m "AshStore v2 automatic update"
-
-            git push origin HEAD:${{ github.event.repository.default_branch }}
-
+            git push origin v2-development
           fi
