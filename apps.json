@@ -3,5 +3,126 @@
   "identifier": "com.github.ashreq.ashstore-repo",
   "subtitle": "Custom apps and tweaks",
   "description": "A personal repository for enhanced applications.",
-  "apps": []
+  "apps": [
+    {
+      "name": "Facebook Glow",
+      "bundleIdentifier": "com.facebook.Facebook",
+      "developerName": "Meta Platforms, Inc.",
+      "category": "Social",
+      "localizedDescription": "Modified Facebook application featuring dark mode and privacy customizations.",
+      "version": "572.0.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/Glow_FB_v1.3.1.ipa",
+      "size": 207255574,
+      "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
+      "versions": [
+        {
+          "version": "572.0.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/Glow_FB_v1.3.1.ipa",
+          "size": 207255574,
+          "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook.png"
+    },
+    {
+      "name": "FotMob",
+      "bundleIdentifier": "com.mobilefootie.fotmobpro",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "1238.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+      "size": 73698085,
+      "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+      "versions": [
+        {
+          "version": "1238.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/FotMob_v1238-AppAssassin_%40iosdecrypted_injected.ipa",
+          "size": 73698085,
+          "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro.png"
+    },
+    {
+      "name": "Infuse Plus",
+      "bundleIdentifier": "com.firecore.infuse",
+      "developerName": "Firecore",
+      "category": "Media",
+      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
+      "version": "8.5",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/InfusePlus_v8.5.ipa",
+      "size": 98499773,
+      "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+      "versions": [
+        {
+          "version": "8.5",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/InfusePlus_v8.5.ipa",
+          "size": 98499773,
+          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse.png"
+    },
+    {
+      "name": "Instagram",
+      "bundleIdentifier": "com.burbn.instagram",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "439.0.0",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/RyukGram_1.3.3_IG439.0.0.ipa",
+      "size": 333529723,
+      "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
+      "versions": [
+        {
+          "version": "439.0.0",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/RyukGram_1.3.3_IG439.0.0.ipa",
+          "size": 333529723,
+          "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_burbn_instagram.png"
+    },
+    {
+      "name": "YouTube",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "21.30.5",
+      "versionDate": "2026-07-31",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/YouTube_21.30_lowiqentity_5.23.ipa",
+      "size": 136005250,
+      "sha256": "8ba5f78ec853c74065c8bcdf51c3a8bc3b03e934b7000bd51d4400a402644919",
+      "versions": [
+        {
+          "version": "21.30.5",
+          "date": "2026-07-31",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v.1.0.0/YouTube_21.30_lowiqentity_5.23.ipa",
+          "size": 136005250,
+          "sha256": "8ba5f78ec853c74065c8bcdf51c3a8bc3b03e934b7000bd51d4400a402644919",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube.png"
+    }
+  ]
 }
