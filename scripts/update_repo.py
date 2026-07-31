@@ -27,31 +27,44 @@ def github_api(url):
 
 
 def get_latest_release():
-
     url = f"https://api.github.com/repos/{REPO}/releases/latest"
-
     return github_api(url)
+
+
+def clean_release_notes(notes):
+
+    if not notes:
+        return "No release notes available"
+
+    return notes.strip()
+
 
 
 def download_file(url, path):
 
-    r = requests.get(url)
-    r.raise_for_status()
+    response = requests.get(url)
+    response.raise_for_status()
 
-    with open(path, "wb") as f:
-        f.write(r.content)
+    with open(path, "wb") as file:
+        file.write(response.content)
+
 
 
 def extract_ipa(ipa_path):
 
     temp = tempfile.mkdtemp()
 
-    with zipfile.ZipFile(ipa_path, "r") as z:
-        z.extractall(temp)
+    with zipfile.ZipFile(ipa_path, "r") as zip_file:
+        zip_file.extractall(temp)
 
-    payload = os.path.join(temp, "Payload")
+
+    payload = os.path.join(
+        temp,
+        "Payload"
+    )
 
     app_path = None
+
 
     for item in os.listdir(payload):
 
@@ -64,16 +77,22 @@ def extract_ipa(ipa_path):
 
             break
 
+
     if not app_path:
-        raise Exception("App bundle not found")
+        raise Exception(
+            "Application bundle not found"
+        )
+
 
     plist_path = os.path.join(
         app_path,
         "Info.plist"
     )
 
-    with open(plist_path, "rb") as f:
-        plist = plistlib.load(f)
+
+    with open(plist_path, "rb") as file:
+
+        plist = plistlib.load(file)
 
 
     return temp, app_path, plist
@@ -82,24 +101,22 @@ def extract_ipa(ipa_path):
 
 def find_icon(app_path, plist):
 
-    possible_icons = []
+    icons = []
 
 
-    # Modern iOS apps
-
-    icons = plist.get(
+    bundle_icons = plist.get(
         "CFBundleIcons",
         {}
     )
 
 
-    primary = icons.get(
+    primary = bundle_icons.get(
         "CFBundlePrimaryIcon",
         {}
     )
 
 
-    possible_icons.extend(
+    icons.extend(
         primary.get(
             "CFBundleIconFiles",
             []
@@ -107,9 +124,7 @@ def find_icon(app_path, plist):
     )
 
 
-    # Older apps
-
-    possible_icons.extend(
+    icons.extend(
         plist.get(
             "CFBundleIconFiles",
             []
@@ -117,20 +132,27 @@ def find_icon(app_path, plist):
     )
 
 
-    # Add common names
-
-    possible_icons.extend([
-        "AppIcon60x60@2x.png",
+    icons.extend([
         "AppIcon60x60@3x.png",
+        "AppIcon60x60@2x.png",
         "Icon.png"
     ])
 
 
-    for icon in possible_icons:
+    files = os.listdir(app_path)
 
-        for file in os.listdir(app_path):
 
-            if file.startswith(icon.replace(".png","")):
+    for icon in icons:
+
+        name = icon.replace(
+            ".png",
+            ""
+        )
+
+
+        for file in files:
+
+            if file.startswith(name):
 
                 return os.path.join(
                     app_path,
@@ -151,8 +173,9 @@ def save_icon(icon_path, bundle):
 
 
     filename = (
-        bundle.replace(".","_")
-        + ".png"
+        bundle.replace(".", "_")
+        +
+        ".png"
     )
 
 
@@ -172,27 +195,6 @@ def save_icon(icon_path, bundle):
 
 
 
-def load_json():
-
-    with open(JSON_FILE,"r") as f:
-
-        return json.load(f)
-
-
-
-def save_json(data):
-
-    with open(JSON_FILE,"w") as f:
-
-        json.dump(
-            data,
-            f,
-            indent=2,
-            ensure_ascii=False
-        )
-
-
-
 def icon_url(filename):
 
     return (
@@ -202,14 +204,39 @@ def icon_url(filename):
 
 
 
+def load_json():
+
+    with open(JSON_FILE, "r") as file:
+
+        return json.load(file)
+
+
+
+def save_json(data):
+
+    with open(JSON_FILE, "w") as file:
+
+        json.dump(
+            data,
+            file,
+            indent=2,
+            ensure_ascii=False
+        )
+
+
+
 def update_existing_app(
         apps,
         plist,
         asset,
-        icon
+        icon,
+        notes
 ):
 
-    bundle = plist["CFBundleIdentifier"]
+    bundle = plist[
+        "CFBundleIdentifier"
+    ]
+
 
     version = plist.get(
         "CFBundleShortVersionString",
@@ -224,15 +251,15 @@ def update_existing_app(
 
     for app in apps:
 
+
         if app["bundleIdentifier"] == bundle:
 
 
             app["version"] = version
+
             app["versionDate"] = today
 
-            app["versionDescription"] = (
-                f"Version {version} release"
-            )
+            app["versionDescription"] = notes
 
             app["downloadURL"] = (
                 asset["browser_download_url"]
@@ -248,7 +275,7 @@ def update_existing_app(
                 )
 
 
-            history = app.get(
+            versions = app.get(
                 "versions",
                 []
             )
@@ -257,46 +284,47 @@ def update_existing_app(
             found = False
 
 
-            for item in history:
+            for item in versions:
 
                 if item["version"] == version:
 
                     item["date"] = today
-                    item["downloadURL"] = asset[
-                        "browser_download_url"
-                    ]
+
+                    item["downloadURL"] = (
+                        asset["browser_download_url"]
+                    )
 
                     item["size"] = asset["size"]
+
+                    item["description"] = notes
 
                     found = True
 
 
+
             if not found:
 
-                history.insert(
+                versions.insert(
                     0,
                     {
                         "version": version,
                         "date": today,
                         "downloadURL":
-                            asset[
-                            "browser_download_url"
-                            ],
+                            asset["browser_download_url"],
                         "size":
                             asset["size"],
-                        "description":
-                            f"Version {version} release"
+                        "description": notes
                     }
                 )
 
 
-            app["versions"] = history
+            app["versions"] = versions
 
 
             print(
-                "Updated:",
-                app["name"]
+                f"Updated {app['name']} {version}"
             )
+
 
             return True
 
@@ -309,12 +337,14 @@ def create_new_app(
         apps,
         plist,
         asset,
-        icon
+        icon,
+        notes
 ):
 
     bundle = plist[
         "CFBundleIdentifier"
     ]
+
 
     name = plist.get(
         "CFBundleDisplayName",
@@ -331,7 +361,12 @@ def create_new_app(
     )
 
 
-    new_app = {
+    today = datetime.utcnow().strftime(
+        "%Y-%m-%d"
+    )
+
+
+    app = {
 
         "name": name,
 
@@ -341,13 +376,9 @@ def create_new_app(
 
         "version": version,
 
-        "versionDate":
-            datetime.utcnow().strftime(
-                "%Y-%m-%d"
-            ),
+        "versionDate": today,
 
-        "versionDescription":
-            f"Version {version} release",
+        "versionDescription": notes,
 
         "downloadURL":
             asset["browser_download_url"],
@@ -358,25 +389,17 @@ def create_new_app(
         "size":
             asset["size"],
 
-        "versions":[
+        "versions": [
 
             {
-                "version":version,
-                "date":
-                    datetime.utcnow().strftime(
-                    "%Y-%m-%d"
-                    ),
-
+                "version": version,
+                "date": today,
                 "downloadURL":
-                    asset[
-                    "browser_download_url"
-                    ],
-
+                    asset["browser_download_url"],
                 "size":
                     asset["size"],
-
                 "description":
-                    f"Version {version} release"
+                    notes
             }
 
         ]
@@ -385,27 +408,28 @@ def create_new_app(
 
     if icon:
 
-        new_app["iconURL"] = icon_url(
+        app["iconURL"] = icon_url(
             icon
         )
 
 
-    apps.append(new_app)
+    apps.append(app)
 
 
     print(
-        "Created new app:",
-        name
+        f"Created new app {name}"
     )
-
-
-    return True
 
 
 
 def main():
 
     release = get_latest_release()
+
+
+    notes = clean_release_notes(
+        release.get("body", "")
+    )
 
 
     ipa_asset = None
@@ -432,9 +456,7 @@ def main():
 
 
         download_file(
-            ipa_asset[
-                "browser_download_url"
-            ],
+            ipa_asset["browser_download_url"],
             ipa.name
         )
 
@@ -444,22 +466,20 @@ def main():
         )
 
 
+        icon_file = None
+
+
         icon = find_icon(
             app_path,
             plist
         )
 
 
-        icon_file = None
-
-
         if icon:
 
             icon_file = save_icon(
                 icon,
-                plist[
-                    "CFBundleIdentifier"
-                ]
+                plist["CFBundleIdentifier"]
             )
 
 
@@ -470,7 +490,8 @@ def main():
         repo["apps"],
         plist,
         ipa_asset,
-        icon_file
+        icon_file,
+        notes
     )
 
 
@@ -480,7 +501,8 @@ def main():
             repo["apps"],
             plist,
             ipa_asset,
-            icon_file
+            icon_file,
+            notes
         )
 
 
