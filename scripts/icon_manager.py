@@ -53,9 +53,12 @@ def find_icon(app_path, plist):
     ])
 
 
-    files = os.listdir(
-        app_path
-    )
+    if not os.path.exists(app_path):
+    return None
+
+files = os.listdir(
+    app_path
+)
 
 
     for icon in icon_names:
