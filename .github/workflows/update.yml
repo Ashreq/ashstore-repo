@@ -14,10 +14,12 @@ jobs:
 
     steps:
 
-      - name: Checkout repository
+      - name: Checkout default branch
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -35,15 +37,17 @@ jobs:
         run: |
           python scripts/update_repo.py
 
-      - name: Commit and Push updated JSON
+      - name: Commit and push changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
+          git status
+
           git add apps.json
 
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No changes detected"
           else
             git commit -m "Auto update app repository"
             git push origin HEAD:${{ github.event.repository.default_branch }}
