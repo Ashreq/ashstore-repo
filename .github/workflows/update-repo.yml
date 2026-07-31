@@ -1,0 +1,50 @@
+name: Auto Update Repo JSON
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '*.ipa' # Runs whenever an .ipa file is pushed
+
+jobs:
+  update-json:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Update apps.json metadata
+      run: |
+        python -c "
+        import json, os, datetime
+
+        # Load existing JSON
+        with open('apps.json', 'r') as f:
+            data = json.load(f)
+
+        # Update specific app sizes based on actual file paths
+        for app in data['apps']:
+            # Assumes your downloadURL ends with the filename in your repo
+            filename = app['downloadURL'].split('/')[-1]
+            if os.path.exists(filename):
+                app['size'] = os.path.getsize(filename)
+                app['versionDate'] = datetime.date.today().isoformat()
+
+        # Save updated JSON
+        with open('apps.json', 'w') as f:
+            json.dump(data, f, indent=2)
+        "
+
+    - name: Commit and Push Changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@://github.com'
+        git add apps.json
+        git commit -m "Automated apps.json update [skip ci]" || exit 0
+        git push
