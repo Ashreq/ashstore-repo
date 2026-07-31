@@ -22,16 +22,21 @@ def extract_ipa(ipa_path):
     app_path = None
 
 
-    for item in os.listdir(payload_path):
+    for root, dirs, files in os.walk(payload_path):
 
-        if item.endswith(".app"):
+    for item in dirs:
+
+        if item.lower().endswith(".app"):
 
             app_path = os.path.join(
-                payload_path,
+                root,
                 item
             )
 
             break
+
+    if app_path:
+        break
 
 
     if not app_path:
