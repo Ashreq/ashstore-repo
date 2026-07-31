@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: v2-development
+          ref: main
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -52,5 +52,5 @@ jobs:
             echo "No changes"
           else
             git commit -m "AshStore v2 automatic update"
-            git push origin v2-development
+            git push origin main
           fi
