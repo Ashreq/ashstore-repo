@@ -3,28 +3,28 @@
   "identifier": "com.github.ashreq.ashstore-repo",
   "apps": [
     {
-      "name": "Infuse",
+      "name": "Infuse Plus",
       "bundleIdentifier": "com.firecore.infuse",
-      "developerName": "Ashreq",
-      "version": "8.5.0",
+      "developerName": "Firecore",
+      "version": "2.6.0",
       "versionDate": "2026-07-31",
-      "versionDescription": "Initial release via AshStore",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Infuse/InfusePlus_2.6.ipa",
-      "localizedDescription": "Put a short description here of what your first app does.",
-      "iconURL": "https://github.com/Ashreq/ashstore-repo/blob/main/infuse-icon-dark.png",
-      "size": 15000000
+      "versionDescription": "Version 2.6 release",
+      "downloadURL": "https://github.com",
+      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
+      "iconURL": "https://githubusercontent.com",
+      "size": 50000000
     },
     {
-      "name": "facebook",
+      "name": "Facebook Glow",
       "bundleIdentifier": "com.facebook.Facebook",
-      "developerName": "Ashreq",
-      "version": "572.0.0",
+      "developerName": "Meta Platforms, Inc.",
+      "version": "1.3.1",
       "versionDate": "2026-07-31",
-      "versionDescription": "Initial release via AshStore",
+      "versionDescription": "Glow FB version 1.3.1 release",
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Facebook/Glow_FB_v1.3.1.ipa",
-      "localizedDescription": "Put a short description here of what your second app does.",
-      "iconURL": "https://github.com/Ashreq/ashstore-repo/blob/main/facebook.png",
-      "size": 20000000
+      "localizedDescription": "Modified Facebook application featuring dark mode and privacy customizations.",
+      "iconURL": "https://githubusercontent.com",
+      "size": 60000000
     }
   ]
 }
