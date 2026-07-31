@@ -63,6 +63,49 @@ def read_plist(app_path):
 
 
 
+def detect_developer_name(plist):
+
+    # Try common developer fields
+
+    developer = (
+        plist.get("artistName")
+        or plist.get("developerName")
+        or plist.get("SellerName")
+        or plist.get("TeamName")
+    )
+
+
+    if developer:
+
+        return developer
+
+
+    # Fallback using bundle identifier
+
+    bundle = plist.get(
+        "CFBundleIdentifier",
+        ""
+    )
+
+
+    if bundle:
+
+        parts = bundle.split(".")
+
+
+        if len(parts) >= 2:
+
+            return (
+                parts[1]
+                .replace("-", " ")
+                .title()
+            )
+
+
+    return "Unknown"
+
+
+
 def read_ipa_info(ipa_path):
 
     temp_dir, app_path = extract_ipa(
@@ -86,6 +129,12 @@ def read_ipa_info(ipa_path):
                         "CFBundleName",
                         "Unknown"
                     )
+                ),
+
+
+            "developerName":
+                detect_developer_name(
+                    plist
                 ),
 
 
@@ -128,5 +177,5 @@ def read_ipa_info(ipa_path):
 
     finally:
 
-        # Keep appPath usable until icon extraction finishes
+        # Keep appPath available for icon extraction
         pass
