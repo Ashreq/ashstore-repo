@@ -12,31 +12,28 @@ def extract_ipa(ipa_path):
     with zipfile.ZipFile(ipa_path, "r") as archive:
         archive.extractall(temp_dir)
 
-
     payload_path = os.path.join(
         temp_dir,
         "Payload"
     )
 
-
     app_path = None
-
 
     for root, dirs, files in os.walk(payload_path):
 
-    for item in dirs:
+        for item in dirs:
 
-        if item.lower().endswith(".app"):
+            if item.lower().endswith(".app"):
 
-            app_path = os.path.join(
-                root,
-                item
-            )
+                app_path = os.path.join(
+                    root,
+                    item
+                )
 
+                break
+
+        if app_path:
             break
-
-    if app_path:
-        break
 
 
     if not app_path:
@@ -80,7 +77,7 @@ def read_ipa_info(ipa_path):
         )
 
 
-        info = {
+        return {
 
             "name":
                 plist.get(
@@ -116,10 +113,7 @@ def read_ipa_info(ipa_path):
             "minimumOSVersion":
                 plist.get(
                     "MinimumOSVersion",
-                    plist.get(
-                        "MinimumOSVersion",
-                        ""
-                    )
+                    ""
                 ),
 
 
@@ -129,16 +123,10 @@ def read_ipa_info(ipa_path):
 
             "plist":
                 plist
-
         }
-
-
-        return info
 
 
     finally:
 
-        shutil.rmtree(
-            temp_dir,
-            ignore_errors=True
-        )
+        # Keep appPath usable until icon extraction finishes
+        pass
