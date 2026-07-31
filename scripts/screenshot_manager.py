@@ -5,6 +5,7 @@ import shutil
 SCREENSHOT_FOLDER = "screenshots"
 
 
+
 def save_screenshots(app_path, bundle_id):
 
     output = os.path.join(
@@ -27,35 +28,63 @@ def save_screenshots(app_path, bundle_id):
 
             lower = file.lower()
 
+
             if (
                 lower.endswith(".png")
                 or lower.endswith(".jpg")
                 or lower.endswith(".jpeg")
             ):
 
-                if (
-                    "screenshot" in lower
-                    or "screen" in lower
-                ):
+                source = os.path.join(
+                    root,
+                    file
+                )
 
-                    source = os.path.join(
-                        root,
-                        file
-                    )
 
-                    destination = os.path.join(
-                        output,
-                        file
-                    )
+                destination = os.path.join(
+                    output,
+                    file
+                )
+
+
+                # Avoid duplicate copies
+
+                if not os.path.exists(destination):
 
                     shutil.copy(
                         source,
                         destination
                     )
 
-                    found.append(
-                        destination
-                    )
+
+                found.append(
+                    destination
+                )
 
 
     return found
+
+
+
+def get_screenshot_urls(
+        screenshots,
+        repo
+):
+
+    urls = []
+
+
+    for file in screenshots:
+
+        relative = file.replace(
+            "\\",
+            "/"
+        )
+
+
+        urls.append(
+            f"https://raw.githubusercontent.com/{repo}/main/{relative}"
+        )
+
+
+    return urls
