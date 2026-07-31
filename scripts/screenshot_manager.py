@@ -4,6 +4,55 @@ import shutil
 
 SCREENSHOT_FOLDER = "screenshots"
 
+MAX_SCREENSHOTS = 8
+
+
+IGNORE_WORDS = [
+    "icon",
+    "logo",
+    "appstore",
+    "launch",
+    "launchimage",
+    "play",
+    "pause",
+    "volume",
+    "close",
+    "delete",
+    "add",
+    "arrow",
+    "button",
+    "background",
+    "bg",
+    "header",
+    "footer",
+    "slider",
+    "cast",
+    "hardware",
+    "ticket"
+]
+
+
+def is_screenshot(filename):
+
+    lower = filename.lower()
+
+
+    if not (
+        lower.endswith(".png")
+        or lower.endswith(".jpg")
+        or lower.endswith(".jpeg")
+    ):
+        return False
+
+
+    for word in IGNORE_WORDS:
+
+        if word in lower:
+            return False
+
+
+    return True
+
 
 
 def save_screenshots(app_path, bundle_id):
@@ -12,6 +61,7 @@ def save_screenshots(app_path, bundle_id):
         SCREENSHOT_FOLDER,
         bundle_id
     )
+
 
     os.makedirs(
         output,
@@ -26,14 +76,11 @@ def save_screenshots(app_path, bundle_id):
 
         for file in files:
 
-            lower = file.lower()
+            if len(found) >= MAX_SCREENSHOTS:
+                break
 
 
-            if (
-                lower.endswith(".png")
-                or lower.endswith(".jpg")
-                or lower.endswith(".jpeg")
-            ):
+            if is_screenshot(file):
 
                 source = os.path.join(
                     root,
@@ -46,8 +93,6 @@ def save_screenshots(app_path, bundle_id):
                     file
                 )
 
-
-                # Avoid duplicate copies
 
                 if not os.path.exists(destination):
 
@@ -62,28 +107,32 @@ def save_screenshots(app_path, bundle_id):
                 )
 
 
+        if len(found) >= MAX_SCREENSHOTS:
+            break
+
+
     return found
 
 
 
-def get_screenshot_urls(
-        screenshots,
-        repo
-):
+def get_screenshot_urls(files, repo):
 
     urls = []
 
 
-    for file in screenshots:
+    for file in files:
 
-        relative = file.replace(
-            "\\",
-            "/"
+        name = os.path.basename(
+            file
+        )
+
+        folder = os.path.basename(
+            os.path.dirname(file)
         )
 
 
         urls.append(
-            f"https://raw.githubusercontent.com/{repo}/main/{relative}"
+            f"https://raw.githubusercontent.com/{repo}/main/screenshots/{folder}/{name}"
         )
 
 
