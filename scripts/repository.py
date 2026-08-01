@@ -12,7 +12,9 @@ def load_config():
     if not os.path.exists(CONFIG_FILE):
 
         return {
-            "settings": {},
+            "settings": {
+                "autoCreateApps": True
+            },
             "apps": {}
         }
 
@@ -20,6 +22,19 @@ def load_config():
     with open(CONFIG_FILE, "r") as file:
 
         return json.load(file)
+
+
+
+def save_config(data):
+
+    with open(CONFIG_FILE, "w") as file:
+
+        json.dump(
+            data,
+            file,
+            indent=2,
+            ensure_ascii=False
+        )
 
 
 
@@ -39,6 +54,7 @@ def load_repository():
     with open(APPS_FILE, "r") as file:
 
         data = json.load(file)
+
 
     migrate_variant_ids(data)
     merge_duplicate_apps(data)
@@ -62,6 +78,71 @@ def save_repository(data):
 
 
 
+def create_default_config(
+        config,
+        info
+):
+
+    bundle_id = info.get(
+        "bundleIdentifier",
+        ""
+    )
+
+
+    apps = config.setdefault(
+        "apps",
+        {}
+    )
+
+
+    if bundle_id not in apps:
+
+        apps[bundle_id] = {
+
+            "name":
+                info.get(
+                    "name",
+                    ""
+                ),
+
+            "variantID":
+                bundle_id.replace(
+                    ".",
+                    "_"
+                ),
+
+            "modName":
+                "",
+
+            "crackedBy":
+                "",
+
+            "developerName":
+                info.get(
+                    "developerName",
+                    "Unknown"
+                ),
+
+            "localizedDescription":
+                "",
+
+            "category":
+                "",
+
+            "featured":
+                False
+        }
+
+
+        save_config(
+            config
+        )
+
+
+    return apps[bundle_id]
+
+
+
 def get_app_config(bundle_id, mod_name=""):
 
     config = load_config()
@@ -75,6 +156,7 @@ def get_app_config(bundle_id, mod_name=""):
     if mod_name:
 
         key = f"{bundle_id}_{mod_name}"
+
 
         if key in apps:
 
@@ -97,14 +179,9 @@ def migrate_variant_ids(repository):
 
         if not app.get("variantID"):
 
-            mod_name = app.get(
-                "modName",
-                ""
-            )
+            if app.get("modName"):
 
-            if mod_name:
-
-                app["variantID"] = mod_name.lower().replace(
+                app["variantID"] = app["modName"].lower().replace(
                     " ",
                     "_"
                 )
@@ -132,7 +209,9 @@ def get_variant_id(app):
 
 def find_app(repository, bundle_id, variant_id=""):
 
-    migrate_variant_ids(repository)
+    migrate_variant_ids(
+        repository
+    )
 
 
     for app in repository.get(
@@ -166,7 +245,7 @@ def create_app(repository, app_data):
 
 def update_app(app, updates):
 
-    for key, value in updates.items():
+    for key,value in updates.items():
 
         if value is not None:
 
@@ -229,15 +308,7 @@ def merge_duplicate_apps(repository):
             existing = merged[key]
 
 
-            # Merge versions
-
             existing_versions = existing.get(
-                "versions",
-                []
-            )
-
-
-            new_versions = app.get(
                 "versions",
                 []
             )
@@ -249,9 +320,14 @@ def merge_duplicate_apps(repository):
             }
 
 
-            for version in new_versions:
+            for version in app.get(
+                "versions",
+                []
+            ):
 
-                if version.get("downloadURL") not in urls:
+                if version.get(
+                    "downloadURL"
+                ) not in urls:
 
                     existing_versions.append(
                         version
@@ -259,20 +335,6 @@ def merge_duplicate_apps(repository):
 
 
             existing["versions"] = existing_versions
-
-
-            # Keep latest release info
-
-            if app.get("versionDate","") >= existing.get(
-                "versionDate",
-                ""
-            ):
-
-                for key,value in app.items():
-
-                    if key != "versions":
-
-                        existing[key] = value
 
 
 
