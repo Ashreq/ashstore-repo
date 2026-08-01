@@ -507,12 +507,17 @@ def main():
     )
 
     save_repository(
-        repository
-    )
+    repository
+)
 
-    save_config(
-        config
-    )
+print(
+    "FINAL CONFIG BEFORE SAVE:",
+    config
+)
+
+save_config(
+    config
+)
 
     print(
         "AshStore update completed"
