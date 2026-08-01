@@ -5,6 +5,33 @@
   "description": "A personal repository for enhanced applications.",
   "apps": [
     {
+      "name": "Facebook Glow",
+      "variantID": "com_facebook_Facebook",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.facebook.Facebook",
+      "developerName": "Facebook",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "572.0.0",
+      "versionDate": "2026-08-01",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.1/Facebook_Glow_v1.3.1.ipa",
+      "size": 207255574,
+      "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
+      "versions": [
+        {
+          "version": "572.0.0",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.1/Facebook_Glow_v1.3.1.ipa",
+          "size": 207255574,
+          "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_com_facebook_Facebook.png"
+    },
+    {
       "name": "Infuse",
       "variantID": "infuse_plus",
       "modName": "Infuse Plus",
