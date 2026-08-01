@@ -208,11 +208,15 @@ def process_app(
 
     if not custom:
 
-        custom = create_default_config(
-            config,
-            info,
-            mod_name
-        )
+    custom = create_default_config(
+        config,
+        info,
+        mod_name
+    )
+
+    save_config(
+        config
+    )
 
 
     variant_id = get_variant_id(
@@ -435,30 +439,23 @@ def main():
         "Starting AshStore v2 update"
     )
 
-
     release = get_latest_release()
-
 
     notes = get_release_notes(
         release
     )
 
-
     repository = load_repository()
 
-
     config = load_config()
-
 
     migrate_variant_ids(
         repository
     )
 
-
     assets = get_ipa_assets(
         release
     )
-
 
     for asset in assets:
 
@@ -469,12 +466,10 @@ def main():
             config
         )
 
-
     settings = config.get(
         "settings",
         {}
     )
-
 
     if settings.get(
         "sortApps",
@@ -485,12 +480,10 @@ def main():
             repository
         )
 
-
     limit = settings.get(
         "versionHistoryLimit",
         10
     )
-
 
     for app in repository.get(
         "apps",
@@ -502,26 +495,21 @@ def main():
             limit
         )
 
-
     remove_empty_variants(
-    repository
-)
+        repository
+    )
 
+    save_repository(
+        repository
+    )
 
-save_repository(
-    repository
-)
+    save_config(
+        config
+    )
 
-
-save_config(
-    config
-)
-
-
-print(
-    "AshStore update completed"
-)
-
+    print(
+        "AshStore update completed"
+    )
 
 
 if __name__ == "__main__":
