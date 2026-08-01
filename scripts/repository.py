@@ -80,7 +80,8 @@ def save_repository(data):
 
 def create_default_config(
         config,
-        info
+        info,
+        mod_name=""
 ):
 
     bundle_id = info.get(
@@ -89,15 +90,39 @@ def create_default_config(
     )
 
 
+    if not bundle_id:
+
+        return {}
+
+
     apps = config.setdefault(
         "apps",
         {}
     )
 
 
-    if bundle_id not in apps:
+    if mod_name:
 
-        apps[bundle_id] = {
+        key = f"{bundle_id}_{mod_name}"
+
+        variant_id = mod_name.lower().replace(
+            " ",
+            "_"
+        )
+
+    else:
+
+        key = bundle_id
+
+        variant_id = bundle_id.replace(
+            ".",
+            "_"
+        )
+
+
+    if key not in apps:
+
+        apps[key] = {
 
             "name":
                 info.get(
@@ -106,13 +131,10 @@ def create_default_config(
                 ),
 
             "variantID":
-                bundle_id.replace(
-                    ".",
-                    "_"
-                ),
+                variant_id,
 
             "modName":
-                "",
+                mod_name,
 
             "crackedBy":
                 "",
@@ -127,7 +149,7 @@ def create_default_config(
                 "",
 
             "category":
-                "",
+                "Other",
 
             "featured":
                 False
@@ -139,7 +161,7 @@ def create_default_config(
         )
 
 
-    return apps[bundle_id]
+    return apps[key]
 
 
 
@@ -156,7 +178,6 @@ def get_app_config(bundle_id, mod_name=""):
     if mod_name:
 
         key = f"{bundle_id}_{mod_name}"
-
 
         if key in apps:
 
@@ -179,9 +200,14 @@ def migrate_variant_ids(repository):
 
         if not app.get("variantID"):
 
-            if app.get("modName"):
+            mod_name = app.get(
+                "modName",
+                ""
+            )
 
-                app["variantID"] = app["modName"].lower().replace(
+            if mod_name:
+
+                app["variantID"] = mod_name.lower().replace(
                     " ",
                     "_"
                 )
@@ -245,7 +271,7 @@ def create_app(repository, app_data):
 
 def update_app(app, updates):
 
-    for key,value in updates.items():
+    for key, value in updates.items():
 
         if value is not None:
 
