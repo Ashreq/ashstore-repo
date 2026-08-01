@@ -8,5 +8,16 @@
     "includeScreenshots": false,
     "autoCreateApps": true
   },
-  "apps": {}
+  "apps": {
+    "com.google.ios.youtube_youtube": {
+      "name": "YouTube",
+      "variantID": "youtube",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    }
+  }
 }
