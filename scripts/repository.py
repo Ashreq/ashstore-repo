@@ -6,6 +6,7 @@ APPS_FILE = "apps.json"
 CONFIG_FILE = "app_config.json"
 
 
+
 def load_config():
 
     if not os.path.exists(CONFIG_FILE):
@@ -13,6 +14,7 @@ def load_config():
             "settings": {},
             "apps": {}
         }
+
 
     with open(CONFIG_FILE, "r") as file:
         return json.load(file)
@@ -60,16 +62,18 @@ def get_app_config(bundle_id, mod_name=""):
     )
 
 
-    # New format:
-    # bundleID_ModName
-    config_key = bundle_id
-
+    # New variant format
     if mod_name:
+
         config_key = f"{bundle_id}_{mod_name}"
 
+        if config_key in apps:
+            return apps[config_key]
 
+
+    # Fallback for apps without variants
     return apps.get(
-        config_key,
+        bundle_id,
         {}
     )
 
@@ -77,11 +81,15 @@ def get_app_config(bundle_id, mod_name=""):
 
 def find_app(repository, bundle_id, mod_name=""):
 
+    mod_name = mod_name or ""
+
+
     for app in repository.get("apps", []):
 
         if (
             app.get("bundleIdentifier") == bundle_id
-            and app.get("modName", "") == mod_name
+            and
+            app.get("modName", "") == mod_name
         ):
             return app
 
@@ -92,7 +100,10 @@ def find_app(repository, bundle_id, mod_name=""):
 
 def create_app(repository, app_data):
 
-    repository["apps"].append(
+    repository.setdefault(
+        "apps",
+        []
+    ).append(
         app_data
     )
 
@@ -105,6 +116,22 @@ def update_app(app, updates):
         if value is not None:
 
             app[key] = value
+
+
+
+def version_exists(versions, new_version):
+
+    for version in versions:
+
+        if (
+            version.get("version") == new_version.get("version")
+            and
+            version.get("downloadURL") == new_version.get("downloadURL")
+        ):
+            return True
+
+
+    return False
 
 
 
@@ -122,17 +149,11 @@ def trim_versions(app, limit):
 def sort_apps(repository):
 
     repository["apps"] = sorted(
-        repository["apps"],
+        repository.get("apps", []),
         key=lambda x:
             (
-                x.get(
-                    "name",
-                    ""
-                )
+                x.get("name", "")
                 +
-                x.get(
-                    "modName",
-                    ""
-                )
+                x.get("modName", "")
             ).lower()
     )
