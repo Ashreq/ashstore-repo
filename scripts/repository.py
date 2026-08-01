@@ -38,11 +38,18 @@ def load_repository():
 
     with open(APPS_FILE, "r") as file:
 
-        return json.load(file)
+        data = json.load(file)
+
+    migrate_variant_ids(data)
+    merge_duplicate_apps(data)
+
+    return data
 
 
 
 def save_repository(data):
+
+    merge_duplicate_apps(data)
 
     with open(APPS_FILE, "w") as file:
 
@@ -67,12 +74,11 @@ def get_app_config(bundle_id, mod_name=""):
 
     if mod_name:
 
-        config_key = f"{bundle_id}_{mod_name}"
+        key = f"{bundle_id}_{mod_name}"
 
+        if key in apps:
 
-        if config_key in apps:
-
-            return apps[config_key]
+            return apps[key]
 
 
     return apps.get(
@@ -89,19 +95,45 @@ def migrate_variant_ids(repository):
         []
     ):
 
-        if (
-            not app.get("variantID")
-            and app.get("modName")
-        ):
+        if not app.get("variantID"):
 
-            app["variantID"] = app["modName"].lower().replace(
-                " ",
-                "_"
+            mod_name = app.get(
+                "modName",
+                ""
             )
+
+            if mod_name:
+
+                app["variantID"] = mod_name.lower().replace(
+                    " ",
+                    "_"
+                )
+
+
+
+def get_variant_id(app):
+
+    if app.get("variantID"):
+
+        return app["variantID"]
+
+
+    if app.get("modName"):
+
+        return app["modName"].lower().replace(
+            " ",
+            "_"
+        )
+
+
+    return ""
 
 
 
 def find_app(repository, bundle_id, variant_id=""):
+
+    migrate_variant_ids(repository)
+
 
     for app in repository.get(
         "apps",
@@ -111,7 +143,7 @@ def find_app(repository, bundle_id, variant_id=""):
         if (
             app.get("bundleIdentifier") == bundle_id
             and
-            app.get("variantID", "") == variant_id
+            get_variant_id(app) == variant_id
         ):
 
             return app
@@ -147,9 +179,9 @@ def version_exists(versions, new_version):
     for version in versions:
 
         if (
-            version.get("version") == new_version.get("version")
-            and
-            version.get("downloadURL") == new_version.get("downloadURL")
+            version.get("downloadURL")
+            ==
+            new_version.get("downloadURL")
         ):
 
             return True
@@ -159,7 +191,7 @@ def version_exists(versions, new_version):
 
 
 
-def remove_empty_variants(repository):
+def merge_duplicate_apps(repository):
 
     apps = repository.get(
         "apps",
@@ -167,50 +199,94 @@ def remove_empty_variants(repository):
     )
 
 
-    cleaned = []
+    merged = {}
 
 
     for app in apps:
 
         bundle = app.get(
-            "bundleIdentifier"
-        )
-
-
-        variant_id = app.get(
-            "variantID",
+            "bundleIdentifier",
             ""
         )
 
-
-        mod_name = app.get(
-            "modName",
-            ""
-        )
-
-
-        # Remove old duplicate entries
-        # if a proper variant entry exists
-        if not variant_id and not mod_name:
-
-            has_variant = any(
-                other.get("bundleIdentifier") == bundle
-                and other.get("variantID", "")
-                for other in apps
-            )
-
-
-            if has_variant:
-
-                continue
-
-
-        cleaned.append(
+        variant = get_variant_id(
             app
         )
 
 
-    repository["apps"] = cleaned
+        key = f"{bundle}_{variant}"
+
+
+        if key not in merged:
+
+            app["variantID"] = variant
+
+            merged[key] = app
+
+
+        else:
+
+            existing = merged[key]
+
+
+            # Merge versions
+
+            existing_versions = existing.get(
+                "versions",
+                []
+            )
+
+
+            new_versions = app.get(
+                "versions",
+                []
+            )
+
+
+            urls = {
+                v.get("downloadURL")
+                for v in existing_versions
+            }
+
+
+            for version in new_versions:
+
+                if version.get("downloadURL") not in urls:
+
+                    existing_versions.append(
+                        version
+                    )
+
+
+            existing["versions"] = existing_versions
+
+
+            # Keep latest release info
+
+            if app.get("versionDate","") >= existing.get(
+                "versionDate",
+                ""
+            ):
+
+                for key,value in app.items():
+
+                    if key != "versions":
+
+                        existing[key] = value
+
+
+
+    repository["apps"] = list(
+        merged.values()
+    )
+
+
+
+def remove_empty_variants(repository):
+
+    merge_duplicate_apps(
+        repository
+    )
 
 
 
@@ -229,13 +305,14 @@ def trim_versions(app, limit):
 def sort_apps(repository):
 
     repository["apps"] = sorted(
-        repository.get("apps", []),
+        repository.get(
+            "apps",
+            []
+        ),
         key=lambda x:
-            (
-                x.get("name", "")
-                +
-                x.get("variantID", "")
-                +
-                x.get("modName", "")
-            ).lower()
+        (
+            x.get("name","")
+            +
+            x.get("variantID","")
+        ).lower()
     )
