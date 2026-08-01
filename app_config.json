@@ -8,5 +8,16 @@
     "includeScreenshots": false,
     "autoCreateApps": true
   },
-  "apps": {}
+  "apps": {
+    "com.google.ios.youtube_youtube": {
+      "name": "YouTube",
+      "variantID": "youtube",
+      "modName": "YTKACE 0.7.5 YouTube",
+      "crackedBy": "",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    }
+  }
 }
