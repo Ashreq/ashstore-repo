@@ -30,7 +30,7 @@ from repository import (
     load_config,
     version_exists,
     remove_empty_variants,
-    migrate_variant_ids
+    create_default_config
 )
 
 
@@ -200,9 +200,17 @@ def process_app(
 
 
     custom = get_variant_config(
+    config,
+    bundle,
+    mod_name
+)
+
+
+if not custom:
+
+    custom = create_default_config(
         config,
-        bundle,
-        mod_name
+        info
     )
 
 
