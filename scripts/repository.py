@@ -103,23 +103,22 @@ def create_default_config(
     )
 
 
-    if mod_name:
+    app_name = info.get(
+        "name",
+        ""
+    ).strip()
 
-        key = f"{bundle_id}_{mod_name}"
 
-        variant_id = mod_name.lower().replace(
-            " ",
-            "_"
-        )
+    variant_id = app_name.lower().replace(
+        " ",
+        "_"
+    ).replace(
+        "-",
+        "_"
+    )
 
-    else:
 
-        key = bundle_id
-
-        variant_id = bundle_id.replace(
-            ".",
-            "_"
-        )
+    key = f"{bundle_id}_{variant_id}"
 
 
     if key not in apps:
