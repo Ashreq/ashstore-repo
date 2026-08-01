@@ -32,6 +32,33 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_facebook_glow.png"
     },
     {
+      "name": "FotMob",
+      "variantID": "com_mobilefootie_fotmobpro",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.mobilefootie.fotmobpro",
+      "developerName": "Mobilefootie",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "1238.0",
+      "versionDate": "2026-08-01",
+      "versionDescription": "Injected with no-ads",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.4/FotMob_v1238_noads.ipa",
+      "size": 73698085,
+      "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+      "versions": [
+        {
+          "version": "1238.0",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.4/FotMob_v1238_noads.ipa",
+          "size": 73698085,
+          "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
+          "description": "Injected with no-ads"
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro_com_mobilefootie_fotmobpro.png"
+    },
+    {
       "name": "Infuse",
       "variantID": "infuse_plus",
       "modName": "Infuse Plus",
