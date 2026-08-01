@@ -30,12 +30,12 @@ from repository import (
     load_config,
     version_exists,
     remove_empty_variants,
-    create_default_config
+    create_default_config,
+    migrate_variant_ids
 )
 
 
 REPO = os.environ["GITHUB_REPOSITORY"]
-
 
 
 def calculate_sha256(file_path):
@@ -64,7 +64,6 @@ def detect_mod_name(asset_name, bundle, config):
         {}
     )
 
-
     for key, value in apps_config.items():
 
         if key.startswith(bundle + "_"):
@@ -74,14 +73,12 @@ def detect_mod_name(asset_name, bundle, config):
                 ""
             )
 
-
             if possible_mod.lower().replace(
                 " ",
                 "_"
             ) in name:
 
                 return possible_mod
-
 
     return ""
 
@@ -94,11 +91,9 @@ def get_variant_config(config, bundle, mod_name=""):
         {}
     )
 
-
     if mod_name:
 
         key = f"{bundle}_{mod_name}"
-
 
         if key in apps_config:
 
@@ -119,16 +114,20 @@ def get_variant_id(custom, mod_name=""):
         ""
     )
 
-
     if variant_id:
 
         return variant_id
 
 
-    return mod_name.lower().replace(
-        " ",
-        "_"
-    )
+    if mod_name:
+
+        return mod_name.lower().replace(
+            " ",
+            "_"
+        )
+
+
+    return ""
 
 
 
@@ -200,18 +199,19 @@ def process_app(
 
 
     custom = get_variant_config(
-    config,
-    bundle,
-    mod_name
-)
-
-
-if not custom:
-
-    custom = create_default_config(
         config,
-        info
+        bundle,
+        mod_name
     )
+
+
+    if not custom:
+
+        custom = create_default_config(
+            config,
+            info,
+            mod_name
+        )
 
 
     variant_id = get_variant_id(
@@ -241,7 +241,6 @@ if not custom:
             " ",
             "_"
         )
-
 
         icon_file = save_icon(
             icon,
@@ -291,53 +290,63 @@ if not custom:
         app["versions"] = versions
 
 
+        updates = {
+
+            "name":
+                custom.get(
+                    "name",
+                    info["name"]
+                ),
+
+            "variantID":
+                variant_id,
+
+            "modName":
+                mod_name,
+
+            "crackedBy":
+                cracked_by,
+
+            "bundleIdentifier":
+                bundle,
+
+            "version":
+                info["version"],
+
+            "versionDate":
+                datetime.now().strftime(
+                    "%Y-%m-%d"
+                ),
+
+            "versionDescription":
+                release_notes,
+
+            "downloadURL":
+                asset["browser_download_url"],
+
+            "size":
+                asset["size"],
+
+            "sha256":
+                sha256
+        }
+
+
+        if icon_file:
+
+            updates["iconURL"] = get_icon_url(
+                icon_file,
+                REPO
+            )
+
+
         update_app(
             app,
-            {
-
-                "name":
-                    custom.get(
-                        "name",
-                        info["name"]
-                    ),
-
-                "variantID":
-                    variant_id,
-
-                "modName":
-                    mod_name,
-
-                "crackedBy":
-                    cracked_by,
-
-                "bundleIdentifier":
-                    bundle,
-
-                "version":
-                    info["version"],
-
-                "versionDate":
-                    datetime.now().strftime(
-                        "%Y-%m-%d"
-                    ),
-
-                "versionDescription":
-                    release_notes,
-
-                "downloadURL":
-                    asset["browser_download_url"],
-
-                "size":
-                    asset["size"],
-
-                "sha256":
-                    sha256
-            }
+            updates
         )
 
 
     else:
-
 
         new_app = {
 
@@ -436,10 +445,10 @@ def main():
 
     repository = load_repository()
 
+
     config = load_config()
 
 
-    # Convert old apps to variantID format
     migrate_variant_ids(
         repository
     )
