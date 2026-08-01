@@ -22,7 +22,6 @@ from icon_manager import (
 from repository import (
     load_repository,
     save_repository,
-    get_app_config,
     find_app,
     create_app,
     update_app,
@@ -49,8 +48,39 @@ def calculate_sha256(file_path):
 
             sha.update(chunk)
 
-
     return sha.hexdigest()
+
+
+
+def version_exists(versions, new_version):
+
+    for version in versions:
+
+        if (
+            version.get("version") == new_version.get("version")
+            and
+            version.get("sha256") == new_version.get("sha256")
+        ):
+            return True
+
+    return False
+
+
+
+def get_variant_config(config, bundle):
+
+    apps_config = config.get(
+        "apps",
+        {}
+    )
+
+    for key, value in apps_config.items():
+
+        if key.startswith(bundle + "_"):
+
+            return value
+
+    return {}
 
 
 
@@ -114,6 +144,24 @@ def process_app(
     ]
 
 
+    custom = get_variant_config(
+        config,
+        bundle
+    )
+
+
+    mod_name = custom.get(
+        "modName",
+        ""
+    )
+
+
+    cracked_by = custom.get(
+        "crackedBy",
+        ""
+    )
+
+
     icon_file = None
 
 
@@ -136,29 +184,11 @@ def process_app(
     )
 
 
-    mod_name = ""
-
-custom = get_app_config(
-    bundle,
-    mod_name
-)
-
-mod_name = custom.get(
-    "modName",
-    ""
-)
-
-cracked_by = custom.get(
-    "crackedBy",
-    ""
-)
-
-
     app = find_app(
-    repository,
-    bundle,
-    mod_name
-)
+        repository,
+        bundle,
+        mod_name
+    )
 
 
     version_entry = build_version_entry(
@@ -173,69 +203,75 @@ cracked_by = custom.get(
 
 
         versions = app.get(
-    "versions",
-    []
-)
+            "versions",
+            []
+        )
 
 
-if not version_exists(
-    versions,
-    version_entry
-):
+        if not version_exists(
+            versions,
+            version_entry
+        ):
 
-    versions.insert(
-        0,
-        version_entry
-    )
+            versions.insert(
+                0,
+                version_entry
+            )
 
 
-app["versions"] = versions
+        app["versions"] = versions
+
+
+        updates = {
+
+            "name":
+                custom.get(
+                    "name",
+                    info["name"]
+                ),
+
+            "modName":
+                mod_name,
+
+            "crackedBy":
+                cracked_by,
+
+            "bundleIdentifier":
+                bundle,
+
+            "version":
+                info["version"],
+
+            "versionDate":
+                datetime.utcnow().strftime(
+                    "%Y-%m-%d"
+                ),
+
+            "versionDescription":
+                release_notes,
+
+            "downloadURL":
+                asset["browser_download_url"],
+
+            "size":
+                asset["size"],
+
+            "sha256":
+                sha256
+        }
+
+
+        if icon_file:
+
+            updates["iconURL"] = get_icon_url(
+                icon_file,
+                REPO
+            )
 
 
         update_app(
-    app,
-    {
-        "name":
-            custom.get(
-                "name",
-                info["name"]
-            ),
-
-        "modName":
-            mod_name,
-
-        "crackedBy":
-            cracked_by,
-
-                "bundleIdentifier":
-                    bundle,
-
-                "version":
-                    info["version"],
-
-                "versionDate":
-                    datetime.utcnow().strftime(
-                        "%Y-%m-%d"
-                    ),
-
-                "versionDescription":
-                    release_notes,
-
-                "downloadURL":
-                    asset["browser_download_url"],
-
-                "size":
-                    asset["size"],
-
-                "sha256":
-                    sha256,
-
-                "iconURL":
-                    get_icon_url(
-                        icon_file,
-                        REPO
-                    )
-            }
+            app,
+            updates
         )
 
 
@@ -244,26 +280,26 @@ app["versions"] = versions
 
         new_app = {
 
-    "name":
-        custom.get(
-            "name",
-            info["name"]
-        ),
+            "name":
+                custom.get(
+                    "name",
+                    info["name"]
+                ),
 
-    "modName":
-        mod_name,
+            "modName":
+                mod_name,
 
-    "crackedBy":
-        cracked_by,
+            "crackedBy":
+                cracked_by,
 
-    "bundleIdentifier":
-        bundle,
+            "bundleIdentifier":
+                bundle,
 
-    "developerName":
-        custom.get(
-            "developerName",
-            "Unknown"
-        ),
+            "developerName":
+                custom.get(
+                    "developerName",
+                    "Unknown"
+                ),
 
             "category":
                 custom.get(
@@ -320,7 +356,6 @@ app["versions"] = versions
 
 
 def main():
-
 
     print(
         "Starting AshStore v2 update"
