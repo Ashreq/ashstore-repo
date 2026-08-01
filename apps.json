@@ -6,6 +6,32 @@
   "apps": [
     {
       "name": "Infuse",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.firecore.infuse",
+      "developerName": "Unknown",
+      "category": "",
+      "localizedDescription": "",
+      "version": "8.5",
+      "versionDate": "2026-08-01",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.4/Infuse_Plus_v8.5.by.Ashraq.ipa",
+      "size": 98499773,
+      "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+      "versions": [
+        {
+          "version": "8.5",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.4/Infuse_Plus_v8.5.by.Ashraq.ipa",
+          "size": 98499773,
+          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse_.png"
+    },
+    {
+      "name": "Infuse",
       "modName": "Infuse Plus",
       "crackedBy": "",
       "bundleIdentifier": "com.firecore.infuse",
