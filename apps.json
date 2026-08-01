@@ -121,6 +121,33 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_burbn_instagram_com_burbn_instagram.png"
     },
     {
+      "name": "Nuvio Enhanced",
+      "variantID": "com_nuvio_enhanced",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.nuvio.enhanced",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "0.3.1",
+      "versionDate": "2026-08-01",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Nuvio-Enhanced-v0.3.1-build102-full-unsigned.ipa",
+      "size": 57948412,
+      "sha256": "418109f5999f8a15d52900e863fa94e1a3c4f915fd525a1ae4b2bb84c4161dc4",
+      "versions": [
+        {
+          "version": "0.3.1",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Nuvio-Enhanced-v0.3.1-build102-full-unsigned.ipa",
+          "size": 57948412,
+          "sha256": "418109f5999f8a15d52900e863fa94e1a3c4f915fd525a1ae4b2bb84c4161dc4",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_enhanced_com_nuvio_enhanced.png"
+    },
+    {
       "name": "YouTube",
       "variantID": "com_google_ios_youtube",
       "modName": "",
