@@ -8,5 +8,16 @@
     "includeScreenshots": false,
     "autoCreateApps": true
   },
-  "apps": {}
+  "apps": {
+    "app.swiftgram.ios": {
+      "name": "Swiftgram",
+      "variantID": "app_swiftgram_ios",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Swiftgram",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    }
+  }
 }

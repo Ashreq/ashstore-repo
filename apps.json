@@ -167,6 +167,33 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_stremio_pal_com_stremio_pal.png"
     },
     {
+      "name": "Swiftgram",
+      "variantID": "app_swiftgram_ios",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "app.swiftgram.ios",
+      "developerName": "Swiftgram",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "12.8",
+      "versionDate": "2026-08-01",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.1/Swiftgram_12.8_TGExtra_1.7.6_.%40ipavault.ipa",
+      "size": 81676827,
+      "sha256": "8ccdf3551b11e060cdfe337e33530232b6a899704873727f1b71d28c3e2346c4",
+      "versions": [
+        {
+          "version": "12.8",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.1/Swiftgram_12.8_TGExtra_1.7.6_.%40ipavault.ipa",
+          "size": 81676827,
+          "sha256": "8ccdf3551b11e060cdfe337e33530232b6a899704873727f1b71d28c3e2346c4",
+          "description": ""
+        }
+      ],
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/app_swiftgram_ios_app_swiftgram_ios.png"
+    },
+    {
       "name": "YouTube",
       "variantID": "com_google_ios_youtube",
       "modName": "",
