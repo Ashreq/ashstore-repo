@@ -82,19 +82,15 @@ def get_app_config(bundle_id, mod_name=""):
 
 
 
-def find_app(repository, bundle_id, mod_name=""):
-
-    mod_name = mod_name or ""
-
+def find_app(repository, bundle_id, variant_id=""):
 
     for app in repository.get("apps", []):
 
         if (
             app.get("bundleIdentifier") == bundle_id
             and
-            app.get("modName", "") == mod_name
+            app.get("variantID", "") == variant_id
         ):
-
             return app
 
 
@@ -169,7 +165,7 @@ def remove_empty_variants(repository):
 
             has_variant = any(
                 other.get("bundleIdentifier") == bundle
-                and other.get("modName", "")
+                and other.get("variantID", "")
                 for other in apps
             )
 
