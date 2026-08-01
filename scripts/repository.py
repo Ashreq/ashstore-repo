@@ -10,6 +10,7 @@ CONFIG_FILE = "app_config.json"
 def load_config():
 
     if not os.path.exists(CONFIG_FILE):
+
         return {
             "settings": {},
             "apps": {}
@@ -17,6 +18,7 @@ def load_config():
 
 
     with open(CONFIG_FILE, "r") as file:
+
         return json.load(file)
 
 
@@ -35,6 +37,7 @@ def load_repository():
 
 
     with open(APPS_FILE, "r") as file:
+
         return json.load(file)
 
 
@@ -62,16 +65,16 @@ def get_app_config(bundle_id, mod_name=""):
     )
 
 
-    # New variant format
     if mod_name:
 
         config_key = f"{bundle_id}_{mod_name}"
 
+
         if config_key in apps:
+
             return apps[config_key]
 
 
-    # Fallback for apps without variants
     return apps.get(
         bundle_id,
         {}
@@ -91,6 +94,7 @@ def find_app(repository, bundle_id, mod_name=""):
             and
             app.get("modName", "") == mod_name
         ):
+
             return app
 
 
@@ -128,10 +132,59 @@ def version_exists(versions, new_version):
             and
             version.get("downloadURL") == new_version.get("downloadURL")
         ):
+
             return True
 
 
     return False
+
+
+
+def remove_empty_variants(repository):
+
+    apps = repository.get(
+        "apps",
+        []
+    )
+
+
+    cleaned = []
+
+
+    for app in apps:
+
+        bundle = app.get(
+            "bundleIdentifier"
+        )
+
+
+        mod_name = app.get(
+            "modName",
+            ""
+        )
+
+
+        # Check if this is an empty variant
+        if not mod_name:
+
+            has_variant = any(
+                other.get("bundleIdentifier") == bundle
+                and other.get("modName", "")
+                for other in apps
+            )
+
+
+            if has_variant:
+
+                continue
+
+
+        cleaned.append(
+            app
+        )
+
+
+    repository["apps"] = cleaned
 
 
 
@@ -141,6 +194,7 @@ def trim_versions(app, limit):
         "versions",
         []
     )
+
 
     app["versions"] = versions[:limit]
 
