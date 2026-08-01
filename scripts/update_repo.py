@@ -488,7 +488,7 @@ def process_app(
                 variant_id,
 
             "modName":
-                mod_name,
+                format_mod_name(mod_name),
 
             "crackedBy":
                 cracked_by,
