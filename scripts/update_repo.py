@@ -188,14 +188,19 @@ cracked_by = custom.get(
 
 
         update_app(
-            app,
-            {
+    app,
+    {
+        "name":
+            custom.get(
+                "name",
+                info["name"]
+            ),
 
-                "name":
-                    custom.get(
-                        "name",
-                        info["name"]
-                    ),
+        "modName":
+            mod_name,
+
+        "crackedBy":
+            cracked_by,
 
                 "bundleIdentifier":
                     bundle,
