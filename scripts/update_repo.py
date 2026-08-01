@@ -28,7 +28,8 @@ from repository import (
     sort_apps,
     trim_versions,
     load_config,
-    version_exists
+    version_exists,
+    remove_empty_variants
 )
 
 
@@ -52,6 +53,7 @@ def calculate_sha256(file_path):
     return sha.hexdigest()
 
 
+
 def detect_mod_name(asset_name, bundle, config):
 
     name = asset_name.lower()
@@ -71,7 +73,11 @@ def detect_mod_name(asset_name, bundle, config):
                 ""
             )
 
-            if possible_mod.lower().replace(" ", "_") in name:
+
+            if possible_mod.lower().replace(
+                " ",
+                "_"
+            ) in name:
 
                 return possible_mod
 
@@ -91,6 +97,7 @@ def get_variant_config(config, bundle, mod_name=""):
     if mod_name:
 
         key = f"{bundle}_{mod_name}"
+
 
         if key in apps_config:
 
@@ -164,12 +171,11 @@ def process_app(
     ]
 
 
-    # Detect variant from IPA filename
     mod_name = detect_mod_name(
-    asset["name"],
-    bundle,
-    config
-)
+        asset["name"],
+        bundle,
+        config
+    )
 
 
     custom = get_variant_config(
@@ -196,9 +202,15 @@ def process_app(
 
     if icon:
 
+        icon_name = f"{bundle}_{mod_name}".replace(
+            " ",
+            "_"
+        )
+
+
         icon_file = save_icon(
             icon,
-            f"{bundle}_{mod_name}"
+            icon_name
         )
 
 
@@ -220,7 +232,6 @@ def process_app(
         release_notes,
         sha256
     )
-
 
 
     if app:
@@ -297,7 +308,6 @@ def process_app(
             app,
             updates
         )
-
 
 
     else:
@@ -443,6 +453,11 @@ def main():
             app,
             limit
         )
+
+
+    remove_empty_variants(
+        repository
+    )
 
 
     save_repository(
