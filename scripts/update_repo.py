@@ -199,7 +199,7 @@ def process_app(
     )
 
 
-        custom = get_variant_config(
+    custom = get_variant_config(
         config,
         bundle,
         mod_name
