@@ -136,15 +136,29 @@ def process_app(
     )
 
 
-    custom = get_app_config(
-        bundle
-    )
+    mod_name = ""
+
+custom = get_app_config(
+    bundle,
+    mod_name
+)
+
+mod_name = custom.get(
+    "modName",
+    ""
+)
+
+cracked_by = custom.get(
+    "crackedBy",
+    ""
+)
 
 
     app = find_app(
-        repository,
-        bundle
-    )
+    repository,
+    bundle,
+    mod_name
+)
 
 
     version_entry = build_version_entry(
