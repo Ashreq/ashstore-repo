@@ -6,11 +6,11 @@
   "apps": [
     {
       "name": "Facebook Glow",
-      "variantID": "com_facebook_Facebook",
-      "modName": "",
+      "variantID": "facebook_glow",
+      "modName": "Facebook Glow",
       "crackedBy": "",
       "bundleIdentifier": "com.facebook.Facebook",
-      "developerName": "Facebook",
+      "developerName": "Meta Platforms, Inc.",
       "category": "Other",
       "localizedDescription": "",
       "version": "572.0.0",
@@ -29,7 +29,7 @@
           "description": ""
         }
       ],
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_com_facebook_Facebook.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_facebook_glow.png"
     },
     {
       "name": "Infuse",
