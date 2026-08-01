@@ -50,26 +50,41 @@ def save_repository(data):
 
 
 
-def get_app_config(bundle_id):
+def get_app_config(bundle_id, mod_name=""):
 
     config = load_config()
 
-    return config.get(
+    apps = config.get(
         "apps",
         {}
-    ).get(
-        bundle_id,
+    )
+
+
+    # New format:
+    # bundleID_ModName
+    config_key = bundle_id
+
+    if mod_name:
+        config_key = f"{bundle_id}_{mod_name}"
+
+
+    return apps.get(
+        config_key,
         {}
     )
 
 
 
-def find_app(repository, bundle_id):
+def find_app(repository, bundle_id, mod_name=""):
 
-    for app in repository["apps"]:
+    for app in repository.get("apps", []):
 
-        if app.get("bundleIdentifier") == bundle_id:
+        if (
+            app.get("bundleIdentifier") == bundle_id
+            and app.get("modName", "") == mod_name
+        ):
             return app
+
 
     return None
 
@@ -109,8 +124,15 @@ def sort_apps(repository):
     repository["apps"] = sorted(
         repository["apps"],
         key=lambda x:
-            x.get(
-                "name",
-                ""
+            (
+                x.get(
+                    "name",
+                    ""
+                )
+                +
+                x.get(
+                    "modName",
+                    ""
+                )
             ).lower()
     )
