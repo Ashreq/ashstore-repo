@@ -53,6 +53,27 @@ def calculate_sha256(file_path):
 
 
 
+def detect_mod_name(asset_name):
+
+    name = asset_name.lower()
+
+
+    if "infuse_plus" in name:
+        return "Infuse Plus"
+
+
+    if "infuse_lite" in name:
+        return "Infuse Lite"
+
+
+    if "facebook_glow" in name:
+        return "Facebook Glow"
+
+
+    return ""
+
+
+
 def get_variant_config(config, bundle, mod_name=""):
 
     apps_config = config.get(
@@ -61,16 +82,15 @@ def get_variant_config(config, bundle, mod_name=""):
     )
 
 
-    # Exact variant match
     if mod_name:
 
         key = f"{bundle}_{mod_name}"
 
         if key in apps_config:
+
             return apps_config[key]
 
 
-    # Fallback bundle match
     return apps_config.get(
         bundle,
         {}
@@ -138,20 +158,12 @@ def process_app(
     ]
 
 
-    # First read mod name from config
-    custom = get_variant_config(
-        config,
-        bundle
+    # Detect variant from IPA filename
+    mod_name = detect_mod_name(
+        asset["name"]
     )
 
 
-    mod_name = custom.get(
-        "modName",
-        ""
-    )
-
-
-    # Reload exact variant config
     custom = get_variant_config(
         config,
         bundle,
@@ -200,6 +212,7 @@ def process_app(
         release_notes,
         sha256
     )
+
 
 
     if app:
@@ -276,6 +289,7 @@ def process_app(
             app,
             updates
         )
+
 
 
     else:
