@@ -199,20 +199,19 @@ def process_app(
     )
 
 
-    custom = get_variant_config(
+        custom = get_variant_config(
         config,
         bundle,
         mod_name
     )
 
-
     if not custom:
 
-    custom = create_default_config(
-        config,
-        info,
-        mod_name
-    )
+        custom = create_default_config(
+            config,
+            info,
+            mod_name
+        )
 
     save_config(
         config
