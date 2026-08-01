@@ -8,22 +8,27 @@
   },
 
   "apps": {
+
     "com.firecore.infuse": {
       "name": "Infuse",
       "modName": "Infuse Plus",
+      "crackedBy": "",
       "developerName": "Firecore",
-      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
+      "localizedDescription": "Enhanced video player and stream manager.",
       "category": "Media",
       "featured": true
     },
 
+
     "com.facebook.Facebook": {
       "name": "Facebook",
       "modName": "Facebook Glow",
+      "crackedBy": "",
       "developerName": "Meta Platforms, Inc.",
-      "localizedDescription": "Modified Facebook application featuring dark mode and privacy customizations.",
+      "localizedDescription": "Modified Facebook application with custom features.",
       "category": "Social",
       "featured": true
     }
+
   }
 }
