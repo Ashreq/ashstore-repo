@@ -4,7 +4,8 @@
     "sortApps": true,
     "extractIcons": true,
     "calculateSHA256": true,
-    "releaseNotes": true
+    "releaseNotes": true,
+    "includeScreenshots": false
   },
 
   "apps": {
