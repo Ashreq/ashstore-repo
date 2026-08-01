@@ -173,18 +173,23 @@ cracked_by = custom.get(
 
 
         versions = app.get(
-            "versions",
-            []
-        )
+    "versions",
+    []
+)
 
 
-        versions.insert(
-            0,
-            version_entry
-        )
+if not version_exists(
+    versions,
+    version_entry
+):
+
+    versions.insert(
+        0,
+        version_entry
+    )
 
 
-        app["versions"] = versions
+app["versions"] = versions
 
 
         update_app(
