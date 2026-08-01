@@ -76,7 +76,8 @@ def detect_mod_name(asset_name, bundle, config):
         "build",
         "full",
         "by",
-        "ashraq"
+        "ashraq",
+        "official"
     }
 
     cleaned = []
@@ -88,7 +89,7 @@ def detect_mod_name(asset_name, bundle, config):
         if lower in ignore:
             continue
 
-        if re.match(r"^v?\d+(\.\d+)*$", lower):
+        if re.match(r"^v?\d+(\.\d+)*.*$", lower):
             continue
 
         cleaned.append(word)
