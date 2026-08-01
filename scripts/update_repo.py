@@ -208,13 +208,23 @@ def process_app(
     if not custom:
 
         custom = create_default_config(
-            config,
-            info,
-            mod_name
-        )
 
-    save_config(
-        config
+        config,
+
+        info,
+
+        mod_name
+
+    )
+
+    print(
+
+        "CONFIG CREATED:",
+
+        bundle,
+
+        custom
+
     )
 
 
