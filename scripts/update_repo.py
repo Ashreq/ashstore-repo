@@ -200,31 +200,32 @@ def process_app(
 
 
     custom = get_variant_config(
-    config,
-    bundle,
-    mod_name
-)
-
-
-if not custom:
-
-    print(
-        "CREATING NEW CONFIG:",
+        config,
         bundle,
         mod_name
     )
 
-    custom = create_default_config(
-        config,
-        info,
-        mod_name
+
+    if not custom:
+
+        print(
+            "CREATING NEW CONFIG:",
+            bundle,
+            mod_name
+        )
+
+        custom = create_default_config(
+            config,
+            info,
+            mod_name
+        )
+
+
+    print(
+        "CONFIG RESULT:",
+        custom
     )
 
-
-print(
-    "CONFIG RESULT:",
-    custom
-)
 
     variant_id = get_variant_id(
         custom,
