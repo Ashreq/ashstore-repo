@@ -58,30 +58,28 @@ def calculate_sha256(file_path):
 
 def detect_mod_name(asset_name, bundle, config):
 
-    name = asset_name.lower()
+    filename = os.path.splitext(asset_name)[0]
 
-    apps_config = config.get(
-        "apps",
-        {}
+    filename = filename.replace(
+        ".ipa",
+        ""
     )
 
-    for key, value in apps_config.items():
 
-        if key.startswith(bundle + "_"):
+    parts = filename.split("_")
 
-            possible_mod = value.get(
-                "modName",
-                ""
-            )
 
-            if possible_mod.lower().replace(
-                " ",
-                "_"
-            ) in name:
+    if len(parts) > 1:
 
-                return possible_mod
+        mod_name = "_".join(parts[:-2])
 
-    return ""
+        return mod_name.replace(
+            "_",
+            " "
+        ).strip()
+
+
+    return filename
 
 
 
@@ -116,8 +114,27 @@ def get_variant_id(custom, mod_name=""):
     )
 
     if variant_id:
-
         return variant_id
+
+
+    if mod_name:
+
+        return mod_name.lower().replace(
+            " ",
+            "_"
+        ).replace(
+            "-",
+            "_"
+        )
+
+
+    return custom.get(
+        "bundleIdentifier",
+        ""
+    ).replace(
+        ".",
+        "_"
+    )
 
 
     if mod_name:
