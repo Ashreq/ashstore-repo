@@ -27,7 +27,8 @@ from repository import (
     update_app,
     sort_apps,
     trim_versions,
-    load_config
+    load_config,
+    version_exists
 )
 
 
@@ -52,35 +53,28 @@ def calculate_sha256(file_path):
 
 
 
-def version_exists(versions, new_version):
-
-    for version in versions:
-
-        if (
-            version.get("version") == new_version.get("version")
-            and
-            version.get("sha256") == new_version.get("sha256")
-        ):
-            return True
-
-    return False
-
-
-
-def get_variant_config(config, bundle):
+def get_variant_config(config, bundle, mod_name=""):
 
     apps_config = config.get(
         "apps",
         {}
     )
 
-    for key, value in apps_config.items():
 
-        if key.startswith(bundle + "_"):
+    # Exact variant match
+    if mod_name:
 
-            return value
+        key = f"{bundle}_{mod_name}"
 
-    return {}
+        if key in apps_config:
+            return apps_config[key]
+
+
+    # Fallback bundle match
+    return apps_config.get(
+        bundle,
+        {}
+    )
 
 
 
@@ -97,7 +91,7 @@ def build_version_entry(
             info["version"],
 
         "date":
-            datetime.utcnow().strftime(
+            datetime.now().strftime(
                 "%Y-%m-%d"
             ),
 
@@ -144,6 +138,7 @@ def process_app(
     ]
 
 
+    # First read mod name from config
     custom = get_variant_config(
         config,
         bundle
@@ -153,6 +148,14 @@ def process_app(
     mod_name = custom.get(
         "modName",
         ""
+    )
+
+
+    # Reload exact variant config
+    custom = get_variant_config(
+        config,
+        bundle,
+        mod_name
     )
 
 
@@ -175,7 +178,7 @@ def process_app(
 
         icon_file = save_icon(
             icon,
-            bundle
+            f"{bundle}_{mod_name}"
         )
 
 
@@ -243,7 +246,7 @@ def process_app(
                 info["version"],
 
             "versionDate":
-                datetime.utcnow().strftime(
+                datetime.now().strftime(
                     "%Y-%m-%d"
                 ),
 
@@ -317,7 +320,7 @@ def process_app(
                 info["version"],
 
             "versionDate":
-                datetime.utcnow().strftime(
+                datetime.now().strftime(
                     "%Y-%m-%d"
                 ),
 
@@ -412,7 +415,7 @@ def main():
     )
 
 
-    for app in repository["apps"]:
+    for app in repository.get("apps", []):
 
         trim_versions(
             app,
