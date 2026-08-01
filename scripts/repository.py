@@ -158,11 +158,6 @@ def create_default_config(
         }
 
 
-        save_config(
-            config
-        )
-
-
     return apps[key]
 
 
