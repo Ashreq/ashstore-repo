@@ -38,6 +38,56 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "com.facebook.Facebook": {
+      "name": "Facebook Glow",
+      "variantID": "com_facebook_Facebook",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Facebook",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.burbn.instagram": {
+      "name": "Instagram",
+      "variantID": "com_burbn_instagram",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Burbn",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.nuvio.enhanced": {
+      "name": "Nuvio Enhanced",
+      "variantID": "com_nuvio_enhanced",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.stremio.pal": {
+      "name": "Stremio",
+      "variantID": "com_stremio_pal",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Stremio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.google.ios.youtube": {
+      "name": "YouTube",
+      "variantID": "com_google_ios_youtube",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }
