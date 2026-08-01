@@ -6,14 +6,15 @@ APPS_FILE = "apps.json"
 CONFIG_FILE = "app_config.json"
 
 
-
 def load_config():
 
     if not os.path.exists(CONFIG_FILE):
 
         return {
             "settings": {
-                "autoCreateApps": True
+                "autoCreateApps": True,
+                "versionHistoryLimit": 10,
+                "sortApps": True
             },
             "apps": {}
         }
@@ -57,6 +58,7 @@ def load_repository():
 
 
     migrate_variant_ids(data)
+
     merge_duplicate_apps(data)
 
     return data
@@ -95,6 +97,7 @@ def create_default_config(
         return {}
 
 
+
     apps = config.setdefault(
         "apps",
         {}
@@ -118,6 +121,7 @@ def create_default_config(
             ".",
             "_"
         )
+
 
 
     if key not in apps:
@@ -205,10 +209,21 @@ def migrate_variant_ids(repository):
                 ""
             )
 
+
             if mod_name:
 
                 app["variantID"] = mod_name.lower().replace(
                     " ",
+                    "_"
+                )
+
+            else:
+
+                app["variantID"] = app.get(
+                    "bundleIdentifier",
+                    ""
+                ).replace(
+                    ".",
                     "_"
                 )
 
@@ -229,7 +244,13 @@ def get_variant_id(app):
         )
 
 
-    return ""
+    return app.get(
+        "bundleIdentifier",
+        ""
+    ).replace(
+        ".",
+        "_"
+    )
 
 
 
@@ -307,6 +328,7 @@ def merge_duplicate_apps(repository):
     merged = {}
 
 
+
     for app in apps:
 
         bundle = app.get(
@@ -322,6 +344,7 @@ def merge_duplicate_apps(repository):
         key = f"{bundle}_{variant}"
 
 
+
         if key not in merged:
 
             app["variantID"] = variant
@@ -334,13 +357,13 @@ def merge_duplicate_apps(repository):
             existing = merged[key]
 
 
-            existing_versions = existing.get(
+            existing_versions = existing.setdefault(
                 "versions",
                 []
             )
 
 
-            urls = {
+            existing_urls = {
                 v.get("downloadURL")
                 for v in existing_versions
             }
@@ -353,14 +376,27 @@ def merge_duplicate_apps(repository):
 
                 if version.get(
                     "downloadURL"
-                ) not in urls:
+                ) not in existing_urls:
 
                     existing_versions.append(
                         version
                     )
 
 
-            existing["versions"] = existing_versions
+
+            if app.get(
+                "versionDate",
+                ""
+            ) >= existing.get(
+                "versionDate",
+                ""
+            ):
+
+                for key,value in app.items():
+
+                    if key != "versions":
+
+                        existing[key] = value
 
 
 
