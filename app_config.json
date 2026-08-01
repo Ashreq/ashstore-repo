@@ -18,6 +18,66 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "com.facebook.Facebook_facebook_glow": {
+      "name": "Facebook Glow",
+      "variantID": "facebook_glow",
+      "modName": "Facebook",
+      "crackedBy": "",
+      "developerName": "Facebook",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.mobilefootie.fotmobpro_fotmob": {
+      "name": "FotMob",
+      "variantID": "fotmob",
+      "modName": "FotMob",
+      "crackedBy": "",
+      "developerName": "Mobilefootie",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.firecore.infuse_infuse": {
+      "name": "Infuse",
+      "variantID": "infuse",
+      "modName": "Infuse",
+      "crackedBy": "",
+      "developerName": "Firecore",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.burbn.instagram_instagram": {
+      "name": "Instagram",
+      "variantID": "instagram",
+      "modName": "Instergram",
+      "crackedBy": "",
+      "developerName": "Burbn",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.nuvio.enhanced_nuvio_enhanced": {
+      "name": "Nuvio Enhanced",
+      "variantID": "nuvio_enhanced",
+      "modName": "Nuvio-Enhanced-v0.3.1-build102-full-unsigned",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.stremio.pal_stremio": {
+      "name": "Stremio",
+      "variantID": "stremio",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Stremio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }
