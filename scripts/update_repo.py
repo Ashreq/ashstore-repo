@@ -29,7 +29,8 @@ from repository import (
     trim_versions,
     load_config,
     version_exists,
-    remove_empty_variants
+    remove_empty_variants,
+    migrate_variant_ids
 )
 
 
@@ -217,7 +218,6 @@ def process_app(
     )
 
 
-
     icon_file = None
 
 
@@ -241,11 +241,9 @@ def process_app(
         )
 
 
-
     sha256 = calculate_sha256(
         ipa_path
     )
-
 
 
     app = find_app(
@@ -253,7 +251,6 @@ def process_app(
         bundle,
         variant_id
     )
-
 
 
     version_entry = build_version_entry(
@@ -264,9 +261,7 @@ def process_app(
     )
 
 
-
     if app:
-
 
         versions = app.get(
             "versions",
@@ -288,64 +283,49 @@ def process_app(
         app["versions"] = versions
 
 
-
-        updates = {
-
-            "name":
-                custom.get(
-                    "name",
-                    info["name"]
-                ),
-
-            "variantID":
-                variant_id,
-
-            "modName":
-                mod_name,
-
-            "crackedBy":
-                cracked_by,
-
-            "bundleIdentifier":
-                bundle,
-
-            "version":
-                info["version"],
-
-            "versionDate":
-                datetime.now().strftime(
-                    "%Y-%m-%d"
-                ),
-
-            "versionDescription":
-                release_notes,
-
-            "downloadURL":
-                asset["browser_download_url"],
-
-            "size":
-                asset["size"],
-
-            "sha256":
-                sha256
-        }
-
-
-
-        if icon_file:
-
-            updates["iconURL"] = get_icon_url(
-                icon_file,
-                REPO
-            )
-
-
-
         update_app(
             app,
-            updates
-        )
+            {
 
+                "name":
+                    custom.get(
+                        "name",
+                        info["name"]
+                    ),
+
+                "variantID":
+                    variant_id,
+
+                "modName":
+                    mod_name,
+
+                "crackedBy":
+                    cracked_by,
+
+                "bundleIdentifier":
+                    bundle,
+
+                "version":
+                    info["version"],
+
+                "versionDate":
+                    datetime.now().strftime(
+                        "%Y-%m-%d"
+                    ),
+
+                "versionDescription":
+                    release_notes,
+
+                "downloadURL":
+                    asset["browser_download_url"],
+
+                "size":
+                    asset["size"],
+
+                "sha256":
+                    sha256
+            }
+        )
 
 
     else:
@@ -416,7 +396,6 @@ def process_app(
         }
 
 
-
         if icon_file:
 
             new_app["iconURL"] = get_icon_url(
@@ -452,6 +431,12 @@ def main():
     config = load_config()
 
 
+    # Convert old apps to variantID format
+    migrate_variant_ids(
+        repository
+    )
+
+
     assets = get_ipa_assets(
         release
     )
@@ -467,12 +452,10 @@ def main():
         )
 
 
-
     settings = config.get(
         "settings",
         {}
     )
-
 
 
     if settings.get(
@@ -485,15 +468,16 @@ def main():
         )
 
 
-
     limit = settings.get(
         "versionHistoryLimit",
         10
     )
 
 
-
-    for app in repository.get("apps", []):
+    for app in repository.get(
+        "apps",
+        []
+    ):
 
         trim_versions(
             app,
@@ -501,11 +485,9 @@ def main():
         )
 
 
-
     remove_empty_variants(
         repository
     )
-
 
 
     save_repository(
