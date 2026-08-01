@@ -224,6 +224,29 @@ def get_variant_id(custom, mod_name=""):
 
 
 
+def format_mod_name(name):
+
+    if not name:
+        return ""
+
+    known = {
+        "ytkace": "YTKACE",
+        "ytkillerplus": "YTKillerPlus",
+        "glow": "Glow",
+        "plus": "Plus",
+        "nuvio": "Nuvio"
+    }
+
+    key = name.lower()
+
+    if key in known:
+        return known[key]
+
+    return name.replace(
+        "_",
+        " "
+    ).title()
+    
 def build_version_entry(
         info,
         asset,
@@ -407,7 +430,7 @@ def process_app(
                 variant_id,
 
             "modName":
-                mod_name,
+                format_mod_name(mod_name),
 
             "crackedBy":
                 cracked_by,
