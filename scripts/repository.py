@@ -97,7 +97,6 @@ def create_default_config(
         return {}
 
 
-
     apps = config.setdefault(
         "apps",
         {}
@@ -121,7 +120,6 @@ def create_default_config(
             ".",
             "_"
         )
-
 
 
     if key not in apps:
@@ -149,11 +147,11 @@ def create_default_config(
                     "Unknown"
                 ),
 
-            "localizedDescription":
-                "",
-
             "category":
                 "Other",
+
+            "localizedDescription":
+                "",
 
             "featured":
                 False
