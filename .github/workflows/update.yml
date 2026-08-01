@@ -46,7 +46,7 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-          git add apps.json icons/
+          git add apps.json app_config.json icons/
 
           if git diff --cached --quiet; then
             echo "No changes"
