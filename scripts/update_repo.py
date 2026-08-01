@@ -52,22 +52,28 @@ def calculate_sha256(file_path):
     return sha.hexdigest()
 
 
-
-def detect_mod_name(asset_name):
+def detect_mod_name(asset_name, bundle, config):
 
     name = asset_name.lower()
 
-
-    if "infuse_plus" in name:
-        return "Infuse Plus"
-
-
-    if "infuse_lite" in name:
-        return "Infuse Lite"
+    apps_config = config.get(
+        "apps",
+        {}
+    )
 
 
-    if "facebook_glow" in name:
-        return "Facebook Glow"
+    for key, value in apps_config.items():
+
+        if key.startswith(bundle + "_"):
+
+            possible_mod = value.get(
+                "modName",
+                ""
+            )
+
+            if possible_mod.lower().replace(" ", "_") in name:
+
+                return possible_mod
 
 
     return ""
@@ -160,8 +166,10 @@ def process_app(
 
     # Detect variant from IPA filename
     mod_name = detect_mod_name(
-        asset["name"]
-    )
+    asset["name"],
+    bundle,
+    config
+)
 
 
     custom = get_variant_config(
