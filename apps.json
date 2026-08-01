@@ -6,6 +6,7 @@
   "apps": [
     {
       "name": "Infuse",
+      "variantID": "infuse_plus",
       "modName": "Infuse Plus",
       "crackedBy": "",
       "bundleIdentifier": "com.firecore.infuse",
@@ -27,49 +28,8 @@
           "size": 98499773,
           "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
           "description": ""
-        },
-        {
-          "version": "8.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.8/Infuse_Plus_v8.5.by.Ashraq.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
-        },
-        {
-          "version": "8.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.6/Infuse_Plus_v8.5.by.Ashraq.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
-        },
-        {
-          "version": "8.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.5/Infuse_Plus_v8.5.by.Ashraq.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
-        },
-        {
-          "version": "8.5",
-          "date": "2026-07-31",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.2/InfusePlus_v8.5.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
-        },
-        {
-          "version": "8.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.7/Infuse_Plus_v8.5.by.Ashraq.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
         }
-      ],
-      "variantID": "infuse_plus"
+      ]
     }
   ]
 }
