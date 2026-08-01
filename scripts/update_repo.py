@@ -28,6 +28,7 @@ from repository import (
     sort_apps,
     trim_versions,
     load_config,
+    save_config,
     version_exists,
     remove_empty_variants,
     create_default_config,
@@ -503,18 +504,23 @@ def main():
 
 
     remove_empty_variants(
-        repository
-    )
+    repository
+)
 
 
-    save_repository(
-        repository
-    )
+save_repository(
+    repository
+)
 
 
-    print(
-        "AshStore update completed"
-    )
+save_config(
+    config
+)
+
+
+print(
+    "AshStore update completed"
+)
 
 
 
