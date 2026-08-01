@@ -18,6 +18,26 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "com.mobilefootie.fotmobpro": {
+      "name": "FotMob",
+      "variantID": "com_mobilefootie_fotmobpro",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Mobilefootie",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.firecore.infuse": {
+      "name": "Infuse",
+      "variantID": "com_firecore_infuse",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Firecore",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }
