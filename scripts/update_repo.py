@@ -111,6 +111,26 @@ def get_variant_config(config, bundle, mod_name=""):
 
 
 
+def get_variant_id(custom, mod_name=""):
+
+    variant_id = custom.get(
+        "variantID",
+        ""
+    )
+
+
+    if variant_id:
+
+        return variant_id
+
+
+    return mod_name.lower().replace(
+        " ",
+        "_"
+    )
+
+
+
 def build_version_entry(
         info,
         asset,
@@ -185,10 +205,17 @@ def process_app(
     )
 
 
+    variant_id = get_variant_id(
+        custom,
+        mod_name
+    )
+
+
     cracked_by = custom.get(
         "crackedBy",
         ""
     )
+
 
 
     icon_file = None
@@ -202,7 +229,7 @@ def process_app(
 
     if icon:
 
-        icon_name = f"{bundle}_{mod_name}".replace(
+        icon_name = f"{bundle}_{variant_id}".replace(
             " ",
             "_"
         )
@@ -214,16 +241,19 @@ def process_app(
         )
 
 
+
     sha256 = calculate_sha256(
         ipa_path
     )
 
 
+
     app = find_app(
         repository,
         bundle,
-        mod_name
+        variant_id
     )
+
 
 
     version_entry = build_version_entry(
@@ -232,6 +262,7 @@ def process_app(
         release_notes,
         sha256
     )
+
 
 
     if app:
@@ -257,6 +288,7 @@ def process_app(
         app["versions"] = versions
 
 
+
         updates = {
 
             "name":
@@ -264,6 +296,9 @@ def process_app(
                     "name",
                     info["name"]
                 ),
+
+            "variantID":
+                variant_id,
 
             "modName":
                 mod_name,
@@ -296,6 +331,7 @@ def process_app(
         }
 
 
+
         if icon_file:
 
             updates["iconURL"] = get_icon_url(
@@ -304,10 +340,12 @@ def process_app(
             )
 
 
+
         update_app(
             app,
             updates
         )
+
 
 
     else:
@@ -320,6 +358,9 @@ def process_app(
                     "name",
                     info["name"]
                 ),
+
+            "variantID":
+                variant_id,
 
             "modName":
                 mod_name,
@@ -375,6 +416,7 @@ def process_app(
         }
 
 
+
         if icon_file:
 
             new_app["iconURL"] = get_icon_url(
@@ -425,10 +467,12 @@ def main():
         )
 
 
+
     settings = config.get(
         "settings",
         {}
     )
+
 
 
     if settings.get(
@@ -441,10 +485,12 @@ def main():
         )
 
 
+
     limit = settings.get(
         "versionHistoryLimit",
         10
     )
+
 
 
     for app in repository.get("apps", []):
@@ -455,9 +501,11 @@ def main():
         )
 
 
+
     remove_empty_variants(
         repository
     )
+
 
 
     save_repository(
