@@ -8,36 +8,5 @@
     "includeScreenshots": false,
     "autoCreateApps": true
   },
-  "apps": {
-    "com.firecore.infuse_Infuse Plus": {
-      "name": "Infuse",
-      "variantID": "infuse_plus",
-      "modName": "Infuse Plus",
-      "crackedBy": "",
-      "developerName": "Firecore",
-      "category": "Media",
-      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
-      "featured": true
-    },
-    "com.facebook.Facebook_Facebook Glow": {
-      "name": "Facebook Glow",
-      "variantID": "facebook_glow",
-      "modName": "Facebook Glow",
-      "crackedBy": "",
-      "developerName": "Meta Platforms, Inc.",
-      "category": "Social",
-      "localizedDescription": "Modified Facebook application featuring enhanced customization.",
-      "featured": true
-    },
-    "com.stremio.pal": {
-      "name": "Stremio",
-      "variantID": "com_stremio_pal",
-      "modName": "",
-      "crackedBy": "",
-      "developerName": "Stremio",
-      "category": "Other",
-      "localizedDescription": "",
-      "featured": false
-    }
-  }
+  "apps": {}
 }
