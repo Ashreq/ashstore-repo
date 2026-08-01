@@ -252,11 +252,19 @@
       "localizedDescription": "",
       "version": "21.30.5",
       "versionDate": "2026-08-01",
-      "versionDescription": "",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.3/YouTube_YTKillerPlus_v21.30.ipa",
-      "size": 136005250,
-      "sha256": "8ba5f78ec853c74065c8bcdf51c3a8bc3b03e934b7000bd51d4400a402644919",
+      "versionDescription": "YTKACE v0.7.5 \r\nby @itzzace0\r\nBonus tweaks\r\n\r\nInjected with:\r\nYTVideoErrorAlert, DontEatMyContent, Gonerino, YouGetCaption, YouChooseQuality, YouQuality, YTABConfig, YTVideoOverlay, YouGroupSettings, YouTubeDislikesReturn, YouPiP, and OpenYouTubeInSafari.",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.4/YTKACE_0.7.5_YouTube_21.30.5_bonus.ipa",
+      "size": 122833724,
+      "sha256": "6fb9e06eeb47e318dd112663bb689ed69ab0a53183c51dcb2f33e8881da95334",
       "versions": [
+        {
+          "version": "21.30.5",
+          "date": "2026-08-01",
+          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.4/YTKACE_0.7.5_YouTube_21.30.5_bonus.ipa",
+          "size": 122833724,
+          "sha256": "6fb9e06eeb47e318dd112663bb689ed69ab0a53183c51dcb2f33e8881da95334",
+          "description": "YTKACE v0.7.5 \r\nby @itzzace0\r\nBonus tweaks\r\n\r\nInjected with:\r\nYTVideoErrorAlert, DontEatMyContent, Gonerino, YouGetCaption, YouChooseQuality, YouQuality, YTABConfig, YTVideoOverlay, YouGroupSettings, YouTubeDislikesReturn, YouPiP, and OpenYouTubeInSafari."
+        },
         {
           "version": "21.30.5",
           "date": "2026-08-01",
