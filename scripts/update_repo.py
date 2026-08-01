@@ -55,31 +55,85 @@ def calculate_sha256(file_path):
     return sha.hexdigest()
 
 
-
 def detect_mod_name(asset_name, bundle, config):
+
+    import re
 
     filename = os.path.splitext(asset_name)[0]
 
-    filename = filename.replace(
-        ".ipa",
-        ""
-    )
+    filename = filename.replace("-", "_")
 
+    words = filename.split("_")
 
-    parts = filename.split("_")
+    bundle_name = bundle.split(".")[-1].lower()
 
+    ignore = {
+        "ipa",
+        "ios",
+        "unsigned",
+        "signed",
+        "bonus",
+        "build",
+        "full",
+        "by",
+        "ashraq"
+    }
 
-    if len(parts) > 1:
+    cleaned = []
 
-        mod_name = "_".join(parts[:-2])
+    for word in words:
 
-        return mod_name.replace(
-            "_",
-            " "
-        ).strip()
+        lower = word.lower()
 
+        if lower in ignore:
+            continue
 
-    return filename
+        if re.match(r"^v?\d+(\.\d+)*$", lower):
+            continue
+
+        cleaned.append(word)
+
+    lower_words = [w.lower() for w in cleaned]
+
+    app_index = -1
+
+    for i, word in enumerate(lower_words):
+
+        if bundle_name in word:
+            app_index = i
+            break
+
+    if app_index == -1:
+
+        return ""
+
+    #
+    # Filename starts with app name
+    #
+    # Example:
+    # YouTube_YTKillerPlus_v21
+    #
+
+    if app_index == 0:
+
+        variant = cleaned[1:]
+
+    #
+    # Filename ends with app name
+    #
+    # Example:
+    # YTKACE_0.7.5_YouTube
+    #
+
+    else:
+
+        variant = cleaned[:app_index]
+
+    if not variant:
+
+        return ""
+
+    return "_".join(variant).lower()
 
 
 
