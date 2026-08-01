@@ -5,18 +5,9 @@
     "extractIcons": true,
     "calculateSHA256": true,
     "releaseNotes": true,
-    "includeScreenshots": false
+    "includeScreenshots": false,
+    "autoCreateApps": true
   },
-  "apps": {
-    "com.firecore.infuse_Infuse Plus": {
-      "name": "Infuse",
-      "variantID": "infuse_plus",
-      "modName": "Infuse Plus",
-      "crackedBy": "",
-      "developerName": "Firecore",
-      "localizedDescription": "An enhanced video player and stream manager with InfusePlus features.",
-      "category": "Media",
-      "featured": true
-    }
-  }
+
+  "apps": {}
 }
