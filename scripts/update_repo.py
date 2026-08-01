@@ -239,20 +239,26 @@ cracked_by = custom.get(
 
         new_app = {
 
-            "name":
-                custom.get(
-                    "name",
-                    info["name"]
-                ),
+    "name":
+        custom.get(
+            "name",
+            info["name"]
+        ),
 
-            "bundleIdentifier":
-                bundle,
+    "modName":
+        mod_name,
 
-            "developerName":
-                custom.get(
-                    "developerName",
-                    "Unknown"
-                ),
+    "crackedBy":
+        cracked_by,
+
+    "bundleIdentifier":
+        bundle,
+
+    "developerName":
+        custom.get(
+            "developerName",
+            "Unknown"
+        ),
 
             "category":
                 custom.get(
