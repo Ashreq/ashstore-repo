@@ -162,14 +162,34 @@ def get_variant_config(config, bundle, mod_name=""):
 
 def get_variant_id(custom, mod_name=""):
 
+    if mod_name:
+
+        return mod_name.lower().replace(
+            " ",
+            "_"
+        ).replace(
+            "-",
+            "_"
+        )
+
+
     variant_id = custom.get(
         "variantID",
         ""
     )
 
     if variant_id:
+
         return variant_id
 
+
+    return custom.get(
+        "bundleIdentifier",
+        ""
+    ).replace(
+        ".",
+        "_"
+    )
 
     if mod_name:
 
