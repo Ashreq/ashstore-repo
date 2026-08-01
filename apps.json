@@ -5,7 +5,9 @@
   "description": "A personal repository for enhanced applications.",
   "apps": [
     {
-      "name": "Infuse Plus",
+      "name": "Infuse",
+      "modName": "Infuse Plus",
+      "crackedBy": "",
       "bundleIdentifier": "com.firecore.infuse",
       "developerName": "Firecore",
       "category": "Media",
@@ -16,6 +18,7 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/test1.2/InfusePlus_v8.5.ipa",
       "size": 98499773,
       "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse.png",
       "versions": [
         {
           "version": "8.5",
@@ -25,8 +28,7 @@
           "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
           "description": ""
         }
-      ],
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse.png"
+      ]
     }
   ]
 }
