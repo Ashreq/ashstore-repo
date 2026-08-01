@@ -82,15 +82,38 @@ def get_app_config(bundle_id, mod_name=""):
 
 
 
+def migrate_variant_ids(repository):
+
+    for app in repository.get(
+        "apps",
+        []
+    ):
+
+        if (
+            not app.get("variantID")
+            and app.get("modName")
+        ):
+
+            app["variantID"] = app["modName"].lower().replace(
+                " ",
+                "_"
+            )
+
+
+
 def find_app(repository, bundle_id, variant_id=""):
 
-    for app in repository.get("apps", []):
+    for app in repository.get(
+        "apps",
+        []
+    ):
 
         if (
             app.get("bundleIdentifier") == bundle_id
             and
             app.get("variantID", "") == variant_id
         ):
+
             return app
 
 
@@ -154,14 +177,21 @@ def remove_empty_variants(repository):
         )
 
 
+        variant_id = app.get(
+            "variantID",
+            ""
+        )
+
+
         mod_name = app.get(
             "modName",
             ""
         )
 
 
-        # Check if this is an empty variant
-        if not mod_name:
+        # Remove old duplicate entries
+        # if a proper variant entry exists
+        if not variant_id and not mod_name:
 
             has_variant = any(
                 other.get("bundleIdentifier") == bundle
@@ -203,6 +233,8 @@ def sort_apps(repository):
         key=lambda x:
             (
                 x.get("name", "")
+                +
+                x.get("variantID", "")
                 +
                 x.get("modName", "")
             ).lower()
