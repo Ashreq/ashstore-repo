@@ -7,6 +7,8 @@ APPS_FILE = "apps.json"
 
 def validate_repository():
 
+    print("\nAshStore Repository Validation\n")
+
     if not os.path.exists(APPS_FILE):
         print("❌ apps.json not found")
         return False
@@ -22,11 +24,11 @@ def validate_repository():
     )
 
 
-    print("\nAshStore Validation\n")
-
     errors = 0
+    warnings = 0
 
-    seen = set()
+    seen_apps = set()
+    seen_urls = set()
 
 
     for app in apps:
@@ -46,14 +48,20 @@ def validate_repository():
             ""
         )
 
+        url = app.get(
+            "downloadURL",
+            ""
+        )
+
 
         key = f"{bundle}_{variant}"
 
 
-        if key in seen:
+        # Duplicate app check
+        if key in seen_apps:
 
             print(
-                "❌ Duplicate:",
+                "❌ Duplicate app:",
                 key
             )
 
@@ -61,7 +69,64 @@ def validate_repository():
 
         else:
 
-            seen.add(key)
+            seen_apps.add(key)
+
+
+        # Duplicate download check
+        if url in seen_urls:
+
+            print(
+                "❌ Duplicate download URL:",
+                url
+            )
+
+            errors += 1
+
+        else:
+
+            seen_urls.add(url)
+
+
+        # Required fields
+
+        if not bundle:
+
+            print(
+                "❌ Missing bundleIdentifier:",
+                name
+            )
+
+            errors += 1
+
+
+        if not variant:
+
+            print(
+                "❌ Missing variantID:",
+                name
+            )
+
+            errors += 1
+
+
+        if not url:
+
+            print(
+                "❌ Missing downloadURL:",
+                name
+            )
+
+            errors += 1
+
+
+        if not app.get("sha256"):
+
+            print(
+                "❌ Missing SHA256:",
+                name
+            )
+
+            errors += 1
 
 
         if not app.get("iconURL"):
@@ -71,46 +136,51 @@ def validate_repository():
                 name
             )
 
+            warnings += 1
 
-        if not app.get("developerName"):
+
+        # Old version history check
+
+        if "versions" in app:
 
             print(
-                "⚠ Missing developer:",
+                "⚠ Old versions array found:",
                 name
             )
 
+            warnings += 1
 
-        if not app.get("downloadURL"):
-
-            print(
-                "❌ Missing download URL:",
-                name
-            )
-
-            errors += 1
 
 
     print("\nSummary")
     print("----------------")
     print(
-        "Apps scanned:",
+        "Apps checked:",
         len(apps)
     )
 
+    print(
+        "Errors:",
+        errors
+    )
 
-    if errors:
+    print(
+        "Warnings:",
+        warnings
+    )
+
+
+    if errors > 0:
 
         print(
-            "❌ Validation failed:",
-            errors,
-            "issues"
+            "\n❌ Validation failed"
         )
 
         return False
 
 
     print(
-        "✓ Repository is healthy"
+        "\n✓ Repository is healthy"
     )
 
     return True
@@ -119,4 +189,6 @@ def validate_repository():
 
 if __name__ == "__main__":
 
-    validate_repository()
+    if not validate_repository():
+
+        exit(1)
