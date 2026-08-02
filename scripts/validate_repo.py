@@ -108,7 +108,7 @@ def validate_repository():
             errors += 1
 
 
-        if not url:
+        if not download_url:
 
             print(
                 "❌ Missing downloadURL:",
