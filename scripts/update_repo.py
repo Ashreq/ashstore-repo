@@ -345,10 +345,73 @@ def process_app(
         ipa_path
     )
 
-    app = None
+    app = find_app(
+        repository,
+        bundle,
+        variant_id
+    )
+
+    if app:
+
+    updates = {
+
+        "name":
+            custom.get(
+                "name",
+                info["name"]
+            ),
+
+        "variantID":
+            variant_id,
+
+        "modName":
+            format_mod_name(mod_name),
+
+        "crackedBy":
+            cracked_by,
+
+        "bundleIdentifier":
+            bundle,
+
+        "version":
+            info["version"],
+
+        "versionDate":
+            datetime.now().strftime(
+                "%Y-%m-%d"
+            ),
+
+        "versionDescription":
+            release_notes,
+
+        "downloadURL":
+            asset["browser_download_url"],
+
+        "size":
+            asset["size"],
+
+        "sha256":
+            sha256
+    }
 
 
-        new_app = {
+    if icon_file:
+
+        updates["iconURL"] = get_icon_url(
+            icon_file,
+            REPO
+        )
+
+
+    update_app(
+        app,
+        updates
+    )
+
+
+else:
+
+    new_app = {
 
             "name":
                 custom.get(
