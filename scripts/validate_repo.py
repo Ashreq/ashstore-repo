@@ -1,5 +1,6 @@
 import json
 import os
+import re
 
 
 APPS_FILE = "apps.json"
@@ -127,6 +128,23 @@ def validate_repository():
 
             errors += 1
 
+        else:
+
+            sha = app.get(
+                "sha256"
+            )
+
+            if not re.fullmatch(
+                r"[a-fA-F0-9]{64}",
+                sha
+            ):
+
+                print(
+                     "❌ Invalid SHA256:",
+                    name
+                )
+
+                errors += 1
 
         if not app.get("iconURL"):
 
