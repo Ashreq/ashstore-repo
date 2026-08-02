@@ -319,3 +319,47 @@ def sort_apps(repository):
             x.get("variantID","")
         ).lower()
     )
+    
+def cleanup_deleted_releases(repository, releases):
+
+    active_urls = set()
+
+    for release in releases:
+
+        for asset in release.get(
+            "assets",
+            []
+        ):
+
+            if asset["name"].lower().endswith(".ipa"):
+
+                active_urls.add(
+                    asset["browser_download_url"]
+                )
+
+
+    for app in repository.get(
+        "apps",
+        []
+    ):
+
+        versions = app.get(
+            "versions",
+            []
+        )
+
+        app["versions"] = [
+            version
+            for version in versions
+            if version.get("downloadURL") in active_urls
+        ]
+
+
+    repository["apps"] = [
+        app
+        for app in repository.get(
+            "apps",
+            []
+        )
+        if app.get("versions")
+    ]
