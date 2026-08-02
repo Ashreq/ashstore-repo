@@ -3,7 +3,7 @@ import hashlib
 from datetime import datetime
 
 from github_api import (
-    get_all_release,
+    get_all_releases,
     get_release_notes,
     get_ipa_assets,
     download_asset
