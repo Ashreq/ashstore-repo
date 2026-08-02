@@ -61,7 +61,6 @@ def load_repository():
 
     remove_version_history(data)
 
-    merge_duplicate_apps(data)
 
     return data
 
@@ -70,8 +69,6 @@ def load_repository():
 def save_repository(data):
 
     remove_version_history(data)
-    
-    merge_duplicate_apps(data)
 
     with open(APPS_FILE, "w") as file:
 
@@ -295,58 +292,6 @@ def update_app(app, updates):
             app[key] = value
 
 
-
-
-def merge_duplicate_apps(repository):
-
-    apps = repository.get(
-        "apps",
-        []
-    )
-
-    merged = {}
-
-    for app in apps:
-
-        bundle = app.get(
-            "bundleIdentifier",
-            ""
-        )
-
-        variant = get_variant_id(
-            app
-        )
-
-        key = f"{bundle}_{variant}"
-
-
-        app["variantID"] = variant
-
-
-        # keep latest duplicate only
-        if key not in merged:
-
-            merged[key] = app
-
-        else:
-
-            existing = merged[key]
-
-
-            if app.get(
-                "versionDate",
-                ""
-            ) >= existing.get(
-                "versionDate",
-                ""
-            ):
-
-                merged[key] = app
-
-
-    repository["apps"] = list(
-        merged.values()
-    )
 
 def remove_version_history(repository):
 
