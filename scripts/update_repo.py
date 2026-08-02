@@ -22,14 +22,11 @@ from icon_manager import (
 from repository import (
     load_repository,
     save_repository,
-    find_app,
     create_app,
     update_app,
     sort_apps,
-    trim_versions,
     load_config,
     save_config,
-    version_exists,
     remove_empty_variants,
     create_default_config,
     migrate_variant_ids
@@ -247,38 +244,6 @@ def format_mod_name(name):
         " "
     ).title()
     
-def build_version_entry(
-        info,
-        asset,
-        notes,
-        sha256
-):
-
-    return {
-
-        "version":
-            info["version"],
-
-        "date":
-            datetime.now().strftime(
-                "%Y-%m-%d"
-            ),
-
-        "downloadURL":
-            asset["browser_download_url"],
-
-        "size":
-            asset["size"],
-
-        "sha256":
-            sha256,
-
-        "description":
-            notes
-    }
-
-
-
 def process_app(
         asset,
         release_notes,
@@ -380,101 +345,8 @@ def process_app(
         ipa_path
     )
 
+    app = None
 
-    app = find_app(
-        repository,
-        bundle,
-        variant_id
-    )
-
-
-    version_entry = build_version_entry(
-        info,
-        asset,
-        release_notes,
-        sha256
-    )
-
-
-    if app:
-
-        versions = app.get(
-            "versions",
-            []
-        )
-
-
-        if not version_exists(
-            versions,
-            version_entry
-        ):
-
-            versions.insert(
-                0,
-                version_entry
-            )
-
-
-        app["versions"] = versions
-
-
-        updates = {
-
-            "name":
-                custom.get(
-                    "name",
-                    info["name"]
-                ),
-
-            "variantID":
-                variant_id,
-
-            "modName":
-                format_mod_name(mod_name),
-
-            "crackedBy":
-                cracked_by,
-
-            "bundleIdentifier":
-                bundle,
-
-            "version":
-                info["version"],
-
-            "versionDate":
-                datetime.now().strftime(
-                    "%Y-%m-%d"
-                ),
-
-            "versionDescription":
-                release_notes,
-
-            "downloadURL":
-                asset["browser_download_url"],
-
-            "size":
-                asset["size"],
-
-            "sha256":
-                sha256
-        }
-
-
-        if icon_file:
-
-            updates["iconURL"] = get_icon_url(
-                icon_file,
-                REPO
-            )
-
-
-        update_app(
-            app,
-            updates
-        )
-
-
-    else:
 
         new_app = {
 
@@ -534,10 +406,6 @@ def process_app(
             "sha256":
                 sha256,
 
-            "versions":
-                [
-                    version_entry
-                ]
         }
 
 
@@ -601,21 +469,6 @@ def main():
 
         sort_apps(
             repository
-        )
-
-    limit = settings.get(
-        "versionHistoryLimit",
-        10
-    )
-
-    for app in repository.get(
-        "apps",
-        []
-    ):
-
-        trim_versions(
-            app,
-            limit
         )
 
     remove_empty_variants(
