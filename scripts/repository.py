@@ -13,7 +13,7 @@ def load_config():
         return {
             "settings": {
                 "autoCreateApps": True,
-                "versionHistoryLimit": 10,
+                "versionHistoryLimit": 0,
                 "sortApps": True
             },
             "apps": {}
@@ -292,22 +292,6 @@ def update_app(app, updates):
 
 
 
-def version_exists(versions, new_version):
-
-    for version in versions:
-
-        if (
-            version.get("downloadURL")
-            ==
-            new_version.get("downloadURL")
-        ):
-
-            return True
-
-
-    return False
-
-
 
 def merge_duplicate_apps(repository):
 
@@ -316,10 +300,7 @@ def merge_duplicate_apps(repository):
         []
     )
 
-
     merged = {}
-
-
 
     for app in apps:
 
@@ -332,48 +313,20 @@ def merge_duplicate_apps(repository):
             app
         )
 
-
         key = f"{bundle}_{variant}"
 
 
+        app["variantID"] = variant
 
+
+        # keep latest duplicate only
         if key not in merged:
 
-            app["variantID"] = variant
-
             merged[key] = app
-
 
         else:
 
             existing = merged[key]
-
-
-            existing_versions = existing.setdefault(
-                "versions",
-                []
-            )
-
-
-            existing_urls = {
-                v.get("downloadURL")
-                for v in existing_versions
-            }
-
-
-            for version in app.get(
-                "versions",
-                []
-            ):
-
-                if version.get(
-                    "downloadURL"
-                ) not in existing_urls:
-
-                    existing_versions.append(
-                        version
-                    )
-
 
 
             if app.get(
@@ -384,12 +337,7 @@ def merge_duplicate_apps(repository):
                 ""
             ):
 
-                for key,value in app.items():
-
-                    if key != "versions":
-
-                        existing[key] = value
-
+                merged[key] = app
 
 
     repository["apps"] = list(
@@ -397,24 +345,11 @@ def merge_duplicate_apps(repository):
     )
 
 
-
 def remove_empty_variants(repository):
 
     merge_duplicate_apps(
         repository
     )
-
-
-
-def trim_versions(app, limit):
-
-    versions = app.get(
-        "versions",
-        []
-    )
-
-
-    app["versions"] = versions[:limit]
 
 
 
