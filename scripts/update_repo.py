@@ -26,7 +26,6 @@ from repository import (
     sort_apps,
     load_config,
     save_config,
-    remove_empty_variants,
     create_default_config,
     migrate_variant_ids
 )
