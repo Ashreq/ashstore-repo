@@ -36,7 +36,7 @@ def get_latest_release():
 
     return github_get(url)
 
-def get_all_release():
+def get_all_releases():
 
     url = (
         f"https://api.github.com/repos/"
