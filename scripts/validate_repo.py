@@ -48,20 +48,19 @@ def validate_repository():
             ""
         )
 
-        url = app.get(
+        download_url = app.get(
             "downloadURL",
             ""
         )
 
 
-        kkey = f"{bundle}_{variant}_{url}"
+        key = f"{bundle}_{variant}_{download_url}"
 
 
-        # Duplicate app check
         if key in seen_apps:
 
             print(
-                "❌ Duplicate app:",
+                "❌ Duplicate release:",
                 key
             )
 
