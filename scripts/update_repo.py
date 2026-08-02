@@ -23,7 +23,6 @@ from repository import (
     load_repository,
     save_repository,
     create_app,
-    update_app,
     sort_apps,
     load_config,
     save_config,
@@ -351,9 +350,7 @@ def process_app(
         variant_id
     )
 
-    if app:
-
-    updates = {
+    new_app = {
 
         "name":
             custom.get(
@@ -362,7 +359,7 @@ def process_app(
             ),
 
         "variantID":
-            variant_id,
+             variant_id,
 
         "modName":
             format_mod_name(mod_name),
@@ -372,6 +369,24 @@ def process_app(
 
         "bundleIdentifier":
             bundle,
+
+        "developerName":
+            custom.get(
+                "developerName",
+                "Unknown"
+            ),
+
+        "category":
+            custom.get(
+                "category",
+                ""
+            ),
+
+        "localizedDescription":
+            custom.get(
+                "localizedDescription",
+                ""
+            ),
 
         "version":
             info["version"],
@@ -395,18 +410,18 @@ def process_app(
     }
 
 
-    if icon_file:
+if icon_file:
 
-        updates["iconURL"] = get_icon_url(
-            icon_file,
-            REPO
-        )
-
-
-    update_app(
-        app,
-        updates
+    new_app["iconURL"] = get_icon_url(
+        icon_file,
+        REPO
     )
+
+
+create_app(
+    repository,
+    new_app
+)
 
 
 else:
