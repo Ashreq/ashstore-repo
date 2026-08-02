@@ -19,16 +19,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Facebook_Glow_v1.3.1.ipa",
       "size": 207255574,
       "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
-      "versions": [
-        {
-          "version": "572.0.0",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Facebook_Glow_v1.3.1.ipa",
-          "size": 207255574,
-          "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_glow.png"
     },
     {
@@ -46,16 +36,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/FotMob_v1238_noads.ipa",
       "size": 73698085,
       "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
-      "versions": [
-        {
-          "version": "1238.0",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/FotMob_v1238_noads.ipa",
-          "size": 73698085,
-          "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro_fotmob.png"
     },
     {
@@ -73,16 +53,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Infuse_Plus_v8.5.by.Ashraq.ipa",
       "size": 98499773,
       "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-      "versions": [
-        {
-          "version": "8.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Infuse_Plus_v8.5.by.Ashraq.ipa",
-          "size": 98499773,
-          "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse_plus.png"
     },
     {
@@ -100,16 +70,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Instergram_RyukGram_v1.3.3.ipa",
       "size": 333529723,
       "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
-      "versions": [
-        {
-          "version": "439.0.0",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Instergram_RyukGram_v1.3.3.ipa",
-          "size": 333529723,
-          "sha256": "e5c9e392c399cd19f4220b27770724acd5aac55121962d4c9b36464b63c8acd0",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_burbn_instagram_instagram.png"
     },
     {
@@ -127,16 +87,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Nuvio-Enhanced-v0.3.1-build102-full-unsigned.ipa",
       "size": 57948412,
       "sha256": "418109f5999f8a15d52900e863fa94e1a3c4f915fd525a1ae4b2bb84c4161dc4",
-      "versions": [
-        {
-          "version": "0.3.1",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Nuvio-Enhanced-v0.3.1-build102-full-unsigned.ipa",
-          "size": 57948412,
-          "sha256": "418109f5999f8a15d52900e863fa94e1a3c4f915fd525a1ae4b2bb84c4161dc4",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_enhanced_nuvio.png"
     },
     {
@@ -154,16 +104,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.6/Nuvio-v0.4.0-Enhanced.ipa",
       "size": 47078757,
       "sha256": "2a4df2ba2d83c406f3b7646256c02a7ff24e2d492f40e0c9a53dc403bc1a0a60",
-      "versions": [
-        {
-          "version": "0.4.0",
-          "date": "2026-08-02",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.6/Nuvio-v0.4.0-Enhanced.ipa",
-          "size": 47078757,
-          "sha256": "2a4df2ba2d83c406f3b7646256c02a7ff24e2d492f40e0c9a53dc403bc1a0a60",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_media_nuvio_enhanced.png"
     },
     {
@@ -181,16 +121,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.6/Nuvio-v0.4.0.ipa",
       "size": 46190861,
       "sha256": "0fadb39632aefbffcd4cc1c76b1a7a941b70001e8383a3c1ccb3e59056906389",
-      "versions": [
-        {
-          "version": "0.4.0",
-          "date": "2026-08-02",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.6/Nuvio-v0.4.0.ipa",
-          "size": 46190861,
-          "sha256": "0fadb39632aefbffcd4cc1c76b1a7a941b70001e8383a3c1ccb3e59056906389",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_media_nuvio.png"
     },
     {
@@ -208,16 +138,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/stremio_iOS.ipa",
       "size": 78053554,
       "sha256": "1194ab49a3b0b502d7c7395630c10c4b7c66cbac5ee73abce0a509bccb65f64f",
-      "versions": [
-        {
-          "version": "2.0.2",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/stremio_iOS.ipa",
-          "size": 78053554,
-          "sha256": "1194ab49a3b0b502d7c7395630c10c4b7c66cbac5ee73abce0a509bccb65f64f",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_stremio_pal_stremio.png"
     },
     {
@@ -235,16 +155,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/YTKACE_0.7.5_YouTube_21.30.5_bonus.ipa",
       "size": 122833724,
       "sha256": "6fb9e06eeb47e318dd112663bb689ed69ab0a53183c51dcb2f33e8881da95334",
-      "versions": [
-        {
-          "version": "21.30.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/YTKACE_0.7.5_YouTube_21.30.5_bonus.ipa",
-          "size": 122833724,
-          "sha256": "6fb9e06eeb47e318dd112663bb689ed69ab0a53183c51dcb2f33e8881da95334",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytkace.png"
     },
     {
@@ -262,16 +172,6 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/YouTube_YTKillerPlus_v21.30.ipa",
       "size": 136005250,
       "sha256": "8ba5f78ec853c74065c8bcdf51c3a8bc3b03e934b7000bd51d4400a402644919",
-      "versions": [
-        {
-          "version": "21.30.5",
-          "date": "2026-08-01",
-          "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/YouTube_YTKillerPlus_v21.30.ipa",
-          "size": 136005250,
-          "sha256": "8ba5f78ec853c74065c8bcdf51c3a8bc3b03e934b7000bd51d4400a402644919",
-          "description": ""
-        }
-      ],
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytkillerplus.png"
     }
   ]
