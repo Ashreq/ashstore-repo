@@ -72,18 +72,18 @@ def validate_repository():
 
 
         # Duplicate download check
-        if url in seen_urls:
+        if download_url in seen_urls:
 
             print(
                 "❌ Duplicate download URL:",
-                url
+                download_url
             )
 
             errors += 1
 
         else:
 
-            seen_urls.add(url)
+            seen_urls.add(download_url)
 
 
         # Required fields
