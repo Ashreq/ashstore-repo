@@ -39,9 +39,9 @@ jobs:
         run: |
           python scripts/update_repo.py
 
-      - name: Validate apps.json
+      - name: Validate AshStore Repository
         run: |
-          python -m json.tool apps.json > /dev/null
+          python scripts/validate_repo.py
 
       - name: Commit updates
         run: |
