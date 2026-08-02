@@ -410,19 +410,18 @@ def process_app(
     }
 
 
-if icon_file:
+    if icon_file:
 
-    new_app["iconURL"] = get_icon_url(
-        icon_file,
-        REPO
+        new_app["iconURL"] = get_icon_url(
+            icon_file,
+            REPO
+        )
+
+
+    create_app(
+        repository,
+        new_app
     )
-
-
-create_app(
-    repository,
-    new_app
-)
-
 
 
 def main():
