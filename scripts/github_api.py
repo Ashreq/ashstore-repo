@@ -34,7 +34,7 @@ def get_all_releases():
         f"{REPO}/releases"
     )
 
-    releases = github_get(utl)
+    releases = github_get(url)
     
     return [
         release
