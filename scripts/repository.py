@@ -338,22 +338,6 @@ def cleanup_deleted_releases(repository, releases):
                 )
 
 
-    for app in repository.get(
-        "apps",
-        []
-    ):
-
-        versions = app.get(
-            "versions",
-            []
-        )
-
-        app["versions"] = [
-            version
-            for version in versions
-            if version.get("downloadURL") in active_urls
-        ]
-
 
     repository["apps"] = [
         app
@@ -361,5 +345,5 @@ def cleanup_deleted_releases(repository, releases):
             "apps",
             []
         )
-        if app.get("versions")
+        if app.get("downloadURL")
     ]
