@@ -78,6 +78,26 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "com.nuvio.media_nuvio_enhanced": {
+      "name": "Nuvio Enhanced",
+      "variantID": "nuvio_enhanced",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.nuvio.media_nuvio": {
+      "name": "Nuvio",
+      "variantID": "nuvio",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }
