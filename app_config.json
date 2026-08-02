@@ -98,6 +98,16 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "com.spotify.client_spotify": {
+      "name": "Spotify",
+      "variantID": "spotify",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Spotify",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }

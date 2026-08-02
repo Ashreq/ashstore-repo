@@ -260,6 +260,23 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_media_nuvio.png"
     },
     {
+      "name": "Spotify",
+      "variantID": "spotify",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.spotify.client",
+      "developerName": "Spotify",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "9.1.68",
+      "versionDate": "2026-08-02",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/Test/EeveeSpotify-6.6.7-9.1.68_Patched.ipa",
+      "size": 130518227,
+      "sha256": "8aa067bc27a06ef414abeb909d10c1ebd3f53623ca8e16033ba515f505c4c294",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_spotify_client_spotify.png"
+    },
+    {
       "name": "Stremio",
       "variantID": "stremio",
       "modName": "",
