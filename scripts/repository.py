@@ -59,6 +59,8 @@ def load_repository():
 
     migrate_variant_ids(data)
 
+    remove_version_history(data)
+
     merge_duplicate_apps(data)
 
     return data
@@ -67,6 +69,8 @@ def load_repository():
 
 def save_repository(data):
 
+    remove_version_history(data)
+    
     merge_duplicate_apps(data)
 
     with open(APPS_FILE, "w") as file:
@@ -344,6 +348,16 @@ def merge_duplicate_apps(repository):
         merged.values()
     )
 
+def remove_version_history(repository):
+
+    for app in repository.get(
+        "apps",
+        []
+    ):
+
+        if "versions" in app:
+
+            del app["versions"]
 
 def remove_empty_variants(repository):
 
