@@ -36,7 +36,20 @@ def get_latest_release():
 
     return github_get(url)
 
+def get_all_release():
 
+    url = (
+        f"https://api.github.com/repos/"
+        f"{REPO}/releases"
+    )
+
+    releases = github_get(utl)
+    
+    return [
+        release
+        for release in releases
+        if not release.get("draft",False)
+    ]
 
 def get_release_notes(release):
 
