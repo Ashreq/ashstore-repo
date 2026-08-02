@@ -39,6 +39,28 @@ def validate_repository():
             "Unknown"
         )
 
+        required_fields = [
+            "name",
+            "bundleIdentifier",
+            "version",
+            "downloadURL",
+            "sha256"
+        ]
+
+        for field in required_fields:
+
+            if not app.get(field):
+
+                print(
+
+                    "❌ Missing field:",
+                    field,
+                    "in",
+                    name
+                )
+
+                errors += 1
+                
         bundle = app.get(
             "bundleIdentifier",
             ""
