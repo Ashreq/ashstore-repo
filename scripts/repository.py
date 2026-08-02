@@ -59,7 +59,6 @@ def load_repository():
 
     migrate_variant_ids(data)
 
-    remove_version_history(data)
 
 
     return data
@@ -68,7 +67,6 @@ def load_repository():
 
 def save_repository(data):
 
-    remove_version_history(data)
 
     with open(APPS_FILE, "w") as file:
 
@@ -304,8 +302,6 @@ def remove_version_history(repository):
 
             del app["versions"]
 
-def remove_empty_variants(repository):
-    return
 
 
 
