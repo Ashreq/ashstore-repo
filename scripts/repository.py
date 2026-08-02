@@ -305,10 +305,7 @@ def remove_version_history(repository):
             del app["versions"]
 
 def remove_empty_variants(repository):
-
-    merge_duplicate_apps(
-        repository
-    )
+    return
 
 
 
