@@ -108,6 +108,16 @@
       "category": "Other",
       "localizedDescription": "",
       "featured": false
+    },
+    "app.swiftgram.ios_swiftgram": {
+      "name": "Swiftgram",
+      "variantID": "swiftgram",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Swiftgram",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
     }
   }
 }
