@@ -27,7 +27,8 @@ from repository import (
     load_config,
     save_config,
     create_default_config,
-    migrate_variant_ids
+    migrate_variant_ids,
+    cleanup_deleted_releases
 )
 
 
@@ -466,7 +467,11 @@ def main():
             repository
         )
 
-
+    cleanup_deleted_releases(
+    repository,
+    releases
+    )
+    
     save_repository(
         repository
     )
