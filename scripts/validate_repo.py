@@ -54,7 +54,7 @@ def validate_repository():
         )
 
 
-        key = f"{bundle}_{variant}"
+        kkey = f"{bundle}_{variant}_{url}"
 
 
         # Duplicate app check
