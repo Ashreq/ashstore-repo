@@ -3,7 +3,7 @@ import hashlib
 from datetime import datetime
 
 from github_api import (
-    get_latest_release,
+    get_all_release,
     get_release_notes,
     get_ipa_assets,
     download_asset
@@ -424,32 +424,25 @@ def main():
         "Starting AshStore v2 update"
     )
 
-    release = get_latest_release()
+    release = get_all_release()
+    for relese in releases:
 
-    notes = get_release_notes(
-        release
-    )
-
-    repository = load_repository()
-
-    config = load_config()
-
-    migrate_variant_ids(
-        repository
-    )
-
-    assets = get_ipa_assets(
-        release
-    )
-
-    for asset in assets:
-
-        process_app(
-            asset,
-            notes,
-            repository,
-            config
+        notes = get_release_notes(
+            release
         )
+
+        assets = get_ipa_assets(
+            release
+        )
+
+        for asset in assets:
+
+            process_app(
+                asset,
+                notes,
+                repository,
+                config
+            )
 
     settings = config.get(
         "settings",
