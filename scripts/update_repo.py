@@ -344,12 +344,6 @@ def process_app(
         ipa_path
     )
 
-    app = find_app(
-        repository,
-        bundle,
-        variant_id
-    )
-
     new_app = {
 
         "name":
