@@ -424,8 +424,16 @@ def main():
         "Starting AshStore v2 update"
     )
 
-    release = get_all_release()
-    for relese in releases:
+    repository = load_repository()
+
+    # Rebuild repository from GitHub releases
+    repository["apps"] = []
+
+    config = load_config()
+
+    releases = get_all_releases()
+
+    for release in releases:
 
         notes = get_release_notes(
             release
@@ -444,6 +452,7 @@ def main():
                 config
             )
 
+
     settings = config.get(
         "settings",
         {}
@@ -457,10 +466,6 @@ def main():
         sort_apps(
             repository
         )
-
-    remove_empty_variants(
-        repository
-    )
 
 
     save_repository(
