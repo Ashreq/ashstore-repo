@@ -5,7 +5,24 @@
   "description": "A personal repository for enhanced applications.",
   "apps": [
     {
-      "name": "Facebook Glow",
+      "name": "EeveeSpotify",
+      "variantID": "eeveespotify",
+      "modName": "EeveeSpotify",
+      "crackedBy": "",
+      "bundleIdentifier": "com.spotify.client",
+      "developerName": "Spotify",
+      "category": "Other",
+      "localizedDescription": "EeveeSpotify Patched = for jailbroken, TrollStore or paid cert",
+      "version": "9.1.68",
+      "versionDate": "2026-08-03",
+      "versionDescription": "Support for Spotify 9.1.66 and 9.1.68. Improved stability.",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.7/EeveeSpotify-6.6.7-9.1.68_Patched.ipa",
+      "size": 130518227,
+      "sha256": "8aa067bc27a06ef414abeb909d10c1ebd3f53623ca8e16033ba515f505c4c294",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_spotify_client_eeveespotify.png"
+    },
+    {
+      "name": "Facebook Glow Glow",
       "variantID": "facebook_glow",
       "modName": "Facebook Glow",
       "crackedBy": "",
@@ -22,7 +39,7 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_facebook_glow.png"
     },
     {
-      "name": "FotMob",
+      "name": "FotMob Noads",
       "variantID": "noads",
       "modName": "Noads",
       "crackedBy": "",
@@ -39,7 +56,7 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro_noads.png"
     },
     {
-      "name": "Infuse",
+      "name": "Infuse Plus",
       "variantID": "plus_v8.5.by.ashraq",
       "modName": "Plus V8.5.By.Ashraq",
       "crackedBy": "",
@@ -56,7 +73,7 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse_plus_v8_5_by_ashraq.png"
     },
     {
-      "name": "Nuvio Enhanced",
+      "name": "Nuvio Enhanced Enhanced",
       "variantID": "nuvio_enhanced",
       "modName": "Nuvio Enhanced",
       "crackedBy": "",
@@ -90,24 +107,7 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_nuvio_media_nuvio.png"
     },
     {
-      "name": "Spotify",
-      "variantID": "eeveespotify",
-      "modName": "Eeveespotify",
-      "crackedBy": "",
-      "bundleIdentifier": "com.spotify.client",
-      "developerName": "Spotify",
-      "category": "Other",
-      "localizedDescription": "EeveeSpotify Patched = for jailbroken, TrollStore or paid cert",
-      "version": "9.1.68",
-      "versionDate": "2026-08-03",
-      "versionDescription": "Support for Spotify 9.1.66 and 9.1.68. Improved stability.",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.7/EeveeSpotify-6.6.7-9.1.68_Patched.ipa",
-      "size": 130518227,
-      "sha256": "8aa067bc27a06ef414abeb909d10c1ebd3f53623ca8e16033ba515f505c4c294",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_spotify_client_eeveespotify.png"
-    },
-    {
-      "name": "Swiftgram",
+      "name": "Swiftgram TGExtra",
       "variantID": "tgextra_.@ipavault",
       "modName": "Tgextra .@Ipavault",
       "crackedBy": "",
@@ -124,24 +124,7 @@
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/app_swiftgram_ios_tgextra__@ipavault.png"
     },
     {
-      "name": "YouTube",
-      "variantID": "ytplus_cracked.tg@tubevault",
-      "modName": "Ytplus Cracked.Tg@Tubevault",
-      "crackedBy": "",
-      "bundleIdentifier": "com.google.ios.youtube",
-      "developerName": "Google",
-      "category": "Other",
-      "localizedDescription": "YTPlus 5.2.2 Cracked by zarzel YouTube v21.31.3",
-      "version": "21.31.3",
-      "versionDate": "2026-08-03",
-      "versionDescription": "Downloading does not work on this version of YouTube No Bonus Tweaks Sidestore is supported",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YouTube_v21.31.3_YTPlus_v5.2.2_cracked.tg%40tubevault.ipa",
-      "size": 142219559,
-      "sha256": "99d3847be6653d58723d1465c0fc4ab87079d341b3a80973e9c1647d4cffdb38",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplus_cracked_tg@tubevault.png"
-    },
-    {
-      "name": "YouTube",
+      "name": "YouTube YTPlus M",
       "variantID": "ytplusm_5.2.2.tg@tubevault",
       "modName": "Ytplusm 5.2.2.Tg@Tubevault",
       "crackedBy": "",
@@ -156,6 +139,23 @@
       "size": 133357787,
       "sha256": "8d4fe82447fe35056ebc9a2962b9ce531fd581926f471c4bca88146fc5aae22f",
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplusm_5_2_2_tg@tubevault.png"
+    },
+    {
+      "name": "YouTube YTPlus",
+      "variantID": "ytplus_cracked.tg@tubevault",
+      "modName": "Ytplus Cracked.Tg@Tubevault",
+      "crackedBy": "",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "YTPlus 5.2.2 Cracked by zarzel YouTube v21.31.3",
+      "version": "21.31.3",
+      "versionDate": "2026-08-03",
+      "versionDescription": "Downloading does not work on this version of YouTube No Bonus Tweaks Sidestore is supported",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YouTube_v21.31.3_YTPlus_v5.2.2_cracked.tg%40tubevault.ipa",
+      "size": 142219559,
+      "sha256": "99d3847be6653d58723d1465c0fc4ab87079d341b3a80973e9c1647d4cffdb38",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplus_cracked_tg@tubevault.png"
     }
   ]
 }
