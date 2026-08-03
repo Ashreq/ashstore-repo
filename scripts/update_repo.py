@@ -225,18 +225,22 @@ def format_mod_name(name):
     if not name:
         return ""
 
-    known = {
+    known_mods = {
+        "ytplus": "YTPlus",
+        "ytplusm": "YTPlusM",
         "ytkace": "YTKACE",
         "ytkillerplus": "YTKillerPlus",
+        "eeveespotify": "EeveeSpotify",
         "glow": "Glow",
-        "plus": "Plus",
-        "nuvio": "Nuvio"
+        "tgextra": "TGExtra",
+        "nuvio": "Nuvio",
+        "plus": "Plus"
     }
 
     key = name.lower()
 
-    if key in known:
-        return known[key]
+    if key in known_mods:
+        return known_mods[key]
 
     return name.replace(
         "_",
@@ -357,6 +361,12 @@ def clean_asset_words(asset_name):
         "bonus",
         "by",
         "ashraq"
+        "tg",
+        "tubevault",
+        "ipavault",
+        "cracked",
+        "patched",
+        "zarzel"
     }
 
     for word in words:
@@ -520,6 +530,21 @@ def build_display_name(app_name, mod_name):
 
     return f"{app_name} {clean_mod}"
     
+def get_display_name(custom, app_name, mod_name):
+
+    manual_name = custom.get(
+        "displayName",
+        ""
+    )
+
+    if manual_name:
+        return manual_name
+
+    return build_display_name(
+        app_name,
+        mod_name
+    )
+
 def process_app(
         asset,
         release_notes,
@@ -644,9 +669,10 @@ def process_app(
     new_app = {
         
         "name":
-            custom.get(
-                "name",
-                display_name
+            get_display_name(
+                custom,
+                app_name,
+                mod_name
             ),
 
         "variantID":
