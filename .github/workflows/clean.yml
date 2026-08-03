@@ -1,0 +1,17 @@
+name: Bulk Delete History
+on:
+  workflow_dispatch: # Allows manual trigger from the UI
+
+jobs:
+  clear-history:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Delete old workflow runs
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          retain_days: 0
+          keep_minimum_runs: 10
