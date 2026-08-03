@@ -329,7 +329,172 @@ def get_version_description(asset_name, release_notes):
                     description.append(line)
 
     return " ".join(description)
-    
+def clean_asset_words(asset_name):
+
+    import re
+
+    filename = os.path.splitext(asset_name)[0]
+
+    filename = filename.replace("-", "_")
+
+    words = filename.split("_")
+
+    cleaned = []
+
+    ignore = {
+        "ipa",
+        "ios",
+        "unsigned",
+        "signed",
+        "cracked",
+        "patched",
+        "patch",
+        "full",
+        "build",
+        "release",
+        "beta",
+        "official",
+        "bonus",
+        "by",
+        "ashraq"
+    }
+
+    for word in words:
+
+        lower = word.lower()
+
+        # Remove ignored words
+        if lower in ignore:
+            continue
+
+        # Remove version numbers
+        if re.match(
+            r"^v?\d+(\.\d+)*$",
+            lower
+        ):
+            continue
+
+        cleaned.append(word)
+
+    return cleaned
+
+
+
+def detect_app_name(asset_name, info, bundle):
+
+    # Prefer IPA metadata
+    plist_name = info.get(
+        "name",
+        ""
+    )
+
+    if plist_name:
+        return plist_name
+
+
+    # Bundle fallback
+
+    known_apps = {
+
+        "com.google.ios.youtube": "YouTube",
+
+        "com.spotify.client": "Spotify",
+
+        "com.facebook.Facebook": "Facebook",
+
+        "com.burbn.instagram": "Instagram",
+
+        "com.firecore.infuse": "Infuse",
+
+    }
+
+
+    if bundle in known_apps:
+
+        return known_apps[bundle]
+
+
+    # Last fallback from filename
+
+    words = clean_asset_words(
+        asset_name
+    )
+
+    if words:
+
+        return words[0].title()
+
+
+    return "Unknown"
+
+
+
+def detect_mod_name_new(asset_name, app_name):
+
+    words = clean_asset_words(
+        asset_name
+    )
+
+
+    if not words:
+
+        return ""
+
+
+    app_lower = app_name.lower()
+
+
+    mods = []
+
+
+    for word in words:
+
+        lower = word.lower()
+
+        if lower == app_lower:
+            continue
+
+
+        mods.append(word)
+
+
+    if not mods:
+
+        return ""
+
+
+    return " ".join(mods)
+
+
+
+def build_display_name(app_name, mod_name):
+
+    if not mod_name:
+
+        return app_name
+
+
+    special = {
+
+        "spotify eeveespotify":
+            "EeveeSpotify"
+
+    }
+
+
+    combined = f"{app_name} {mod_name}"
+
+
+    key = combined.lower()
+
+
+    if key in special:
+
+        return special[key]
+
+
+    return combined
+
 def process_app(
         asset,
         release_notes,
@@ -358,10 +523,20 @@ def process_app(
     ]
 
 
-    mod_name = detect_mod_name(
+    app_name = detect_app_name(
         asset["name"],
-        bundle,
-        config
+        info,
+        bundle
+    )
+
+    mod_name = detect_mod_name_new(
+        asset["name"],
+        app_name
+    )
+
+    display_name = build_display_name(
+        app_name,
+        mod_name
     )
 
 
@@ -442,11 +617,11 @@ def process_app(
     )
 
     new_app = {
-
+        
         "name":
             custom.get(
                 "name",
-                info["name"]
+                display_name
             ),
 
         "variantID":
