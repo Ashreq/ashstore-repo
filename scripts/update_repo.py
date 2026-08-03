@@ -242,6 +242,39 @@ def format_mod_name(name):
         "_",
         " "
     ).title()
+
+def get_release_description(asset_name, release_notes):
+
+    if not release_notes:
+        return ""
+
+    asset_key = asset_name.replace(".ipa", "")
+
+    lines = release_notes.splitlines()
+
+    found = False
+
+    for line in lines:
+
+        line = line.strip()
+
+        if line == f"[{asset_key}]":
+            found = True
+            continue
+
+        if found:
+
+            if line.startswith("[") and line.endswith("]"):
+                break
+
+            if line.lower().startswith("description:"):
+
+                return line.split(
+                    ":",
+                    1
+                )[1].strip()
+
+    return ""
     
 def process_app(
         asset,
@@ -344,6 +377,11 @@ def process_app(
         ipa_path
     )
 
+    release_description = get_release_description(
+        asset["name"],
+        release_notes
+    )
+
     new_app = {
 
         "name":
@@ -377,7 +415,9 @@ def process_app(
             ),
 
         "localizedDescription":
-            custom.get(
+            release_description
+            if release_description
+            else custom.get(
                 "localizedDescription",
                 ""
             ),
