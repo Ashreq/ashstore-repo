@@ -478,7 +478,7 @@ def process_app(
             ),
 
         "versionDescription":
-            version_description,
+            version_description
             if version_description
             else custom.get(
                 "versionDescription",
