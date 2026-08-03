@@ -248,11 +248,16 @@ def get_release_description(asset_name, release_notes):
     if not release_notes:
         return ""
 
-    asset_key = asset_name.replace(".ipa", "")
+    asset_key = asset_name.replace(
+        ".ipa",
+        ""
+    )
 
     lines = release_notes.splitlines()
 
     found = False
+    collecting = False
+    description = []
 
     for line in lines:
 
@@ -267,14 +272,21 @@ def get_release_description(asset_name, release_notes):
             if line.startswith("[") and line.endswith("]"):
                 break
 
-            if line.lower().startswith("description:"):
+            if line.lower().startswith(
+                "description:"
+            ):
+                collecting = True
+                continue
 
-                return line.split(
-                    ":",
-                    1
-                )[1].strip()
+            if line.lower().startswith(
+                "version description:"
+            ):
+                break
 
-    return ""
+            if collecting and line:
+                description.append(line)
+
+    return " ".join(description)
 
 def get_version_description(asset_name, release_notes):
 
