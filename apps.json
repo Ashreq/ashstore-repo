@@ -6,8 +6,8 @@
   "apps": [
     {
       "name": "Facebook Glow",
-      "variantID": "glow",
-      "modName": "Glow",
+      "variantID": "facebook_glow",
+      "modName": "Facebook Glow",
       "crackedBy": "",
       "bundleIdentifier": "com.facebook.Facebook",
       "developerName": "Facebook",
@@ -19,12 +19,12 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Facebook_Glow_v1.3.1.ipa",
       "size": 207255574,
       "sha256": "656644a17b71d27ec1c13f5a243ad5e4b4b4bcb22fa040f218f5d7a8018c8c09",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_glow.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_facebook_Facebook_facebook_glow.png"
     },
     {
       "name": "FotMob",
-      "variantID": "fotmob",
-      "modName": "",
+      "variantID": "noads",
+      "modName": "Noads",
       "crackedBy": "",
       "bundleIdentifier": "com.mobilefootie.fotmobpro",
       "developerName": "Mobilefootie",
@@ -36,12 +36,12 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/FotMob_v1238_noads.ipa",
       "size": 73698085,
       "sha256": "4765c111ef2d23cbafd2da71f27d4375f5faacaafe4b4d863e661a7566a59b55",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro_fotmob.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_mobilefootie_fotmobpro_noads.png"
     },
     {
       "name": "Infuse",
-      "variantID": "plus",
-      "modName": "Plus",
+      "variantID": "plus_v8.5.by.ashraq",
+      "modName": "Plus V8.5.By.Ashraq",
       "crackedBy": "",
       "bundleIdentifier": "com.firecore.infuse",
       "developerName": "Firecore",
@@ -53,12 +53,12 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.5/Infuse_Plus_v8.5.by.Ashraq.ipa",
       "size": 98499773,
       "sha256": "2755d1612e2a99dae6ebffdbeb4f0104b85add603129e9aba3b154e37e3ea663",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse_plus.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_firecore_infuse_plus_v8_5_by_ashraq.png"
     },
     {
       "name": "Nuvio Enhanced",
       "variantID": "nuvio_enhanced",
-      "modName": "",
+      "modName": "Nuvio Enhanced",
       "crackedBy": "",
       "bundleIdentifier": "com.nuvio.media",
       "developerName": "Nuvio",
@@ -91,8 +91,8 @@
     },
     {
       "name": "Spotify",
-      "variantID": "spotify",
-      "modName": "",
+      "variantID": "eeveespotify",
+      "modName": "Eeveespotify",
       "crackedBy": "",
       "bundleIdentifier": "com.spotify.client",
       "developerName": "Spotify",
@@ -104,12 +104,12 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.7/EeveeSpotify-6.6.7-9.1.68_Patched.ipa",
       "size": 130518227,
       "sha256": "8aa067bc27a06ef414abeb909d10c1ebd3f53623ca8e16033ba515f505c4c294",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_spotify_client_spotify.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_spotify_client_eeveespotify.png"
     },
     {
       "name": "Swiftgram",
-      "variantID": "swiftgram",
-      "modName": "",
+      "variantID": "tgextra_.@ipavault",
+      "modName": "Tgextra .@Ipavault",
       "crackedBy": "",
       "bundleIdentifier": "app.swiftgram.ios",
       "developerName": "Swiftgram",
@@ -121,24 +121,7 @@
       "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/V1.0.1/Swiftgram_12.8_TGExtra_1.7.6_.%40ipavault.ipa",
       "size": 81676827,
       "sha256": "8ccdf3551b11e060cdfe337e33530232b6a899704873727f1b71d28c3e2346c4",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/app_swiftgram_ios_swiftgram.png"
-    },
-    {
-      "name": "YouTube",
-      "variantID": "youtube",
-      "modName": "",
-      "crackedBy": "",
-      "bundleIdentifier": "com.google.ios.youtube",
-      "developerName": "Google",
-      "category": "Other",
-      "localizedDescription": "YTPlusM v1.4.2 YouTube v21.31.3",
-      "version": "21.31.3",
-      "versionDate": "2026-08-03",
-      "versionDescription": "Bonus Tweaks: YouPiP, YTUHD, YouQuality, RYD, YTABConfig, DontEatMyContent, YTweaks, Gonerino, YouSpeed, YTLowContrastMode, VolumeBoostYT, YouGetCaption, Mark's Tweak YTPlaybackFix, YouChooseQuality, YouShare, PleaseDontStopTheMusic and OpenYouTubeInSafari.",
-      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YTPlusM_21.31.3_5.2.2.tg%40tubevault.ipa",
-      "size": 133357787,
-      "sha256": "8d4fe82447fe35056ebc9a2962b9ce531fd581926f471c4bca88146fc5aae22f",
-      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_youtube.png"
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/app_swiftgram_ios_tgextra__@ipavault.png"
     },
     {
       "name": "YouTube",
@@ -156,6 +139,23 @@
       "size": 142219559,
       "sha256": "99d3847be6653d58723d1465c0fc4ab87079d341b3a80973e9c1647d4cffdb38",
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplus_cracked_tg@tubevault.png"
+    },
+    {
+      "name": "YouTube",
+      "variantID": "ytplusm_5.2.2.tg@tubevault",
+      "modName": "Ytplusm 5.2.2.Tg@Tubevault",
+      "crackedBy": "",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "YTPlusM v1.4.2 YouTube v21.31.3",
+      "version": "21.31.3",
+      "versionDate": "2026-08-03",
+      "versionDescription": "Bonus Tweaks: YouPiP, YTUHD, YouQuality, RYD, YTABConfig, DontEatMyContent, YTweaks, Gonerino, YouSpeed, YTLowContrastMode, VolumeBoostYT, YouGetCaption, Mark's Tweak YTPlaybackFix, YouChooseQuality, YouShare, PleaseDontStopTheMusic and OpenYouTubeInSafari.",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YTPlusM_21.31.3_5.2.2.tg%40tubevault.ipa",
+      "size": 133357787,
+      "sha256": "8d4fe82447fe35056ebc9a2962b9ce531fd581926f471c4bca88146fc5aae22f",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplusm_5_2_2_tg@tubevault.png"
     }
   ]
 }
