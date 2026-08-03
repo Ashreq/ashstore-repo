@@ -360,7 +360,7 @@ def clean_asset_words(asset_name):
         "official",
         "bonus",
         "by",
-        "ashraq"
+        "ashraq",
         "tg",
         "tubevault",
         "ipavault",
@@ -492,34 +492,39 @@ def build_display_name(app_name, mod_name):
 
 
     if "ytplusm" in mod:
-        return f"{app_name} YTPlus M"
+        return f"{app_name.split()[0]} YTPlus M"
 
 
     if "ytplus" in mod:
-        return f"{app_name} YTPlus"
+        return f"{app_name.split()[0]} YTPlus"
 
 
     if "ytkace" in mod:
-        return f"{app_name} YTKACE"
+        return f"{app_name.split()[0]} YTKACE"
 
 
     if "glow" in mod:
+        if "glow" in app_name.lower():
+            return app_name
         return f"{app_name} Glow"
 
 
     if "enhanced" in mod:
+        if "enhanced" in app_name.lower():
+            return app_name
         return f"{app_name} Enhanced"
 
 
     if "tgextra" in mod:
-        return f"{app_name} TGExtra"
+        return f"{app_name.split()[0]} TGExtra"
 
 
     if "plus" in mod:
+        if "plus" in app_name.lower():
+            return app_name
         return f"{app_name} Plus"
 
 
-    # fallback
     clean_mod = (
         mod_name
         .replace("_", " ")
