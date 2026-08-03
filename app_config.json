@@ -8,5 +8,86 @@
     "includeScreenshots": false,
     "autoCreateApps": true
   },
-  "apps": {}
+  "apps": {
+    "com.google.ios.youtube_youtube": {
+      "name": "YouTube",
+      "variantID": "youtube",
+      "modName": "YTPlus cracked.tg@tubevault",
+      "crackedBy": "",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.spotify.client_spotify": {
+      "name": "Spotify",
+      "variantID": "spotify",
+      "modName": "EeveeSpotify",
+      "crackedBy": "",
+      "developerName": "Spotify",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.nuvio.media_nuvio_enhanced": {
+      "name": "Nuvio Enhanced",
+      "variantID": "nuvio_enhanced",
+      "modName": "Nuvio Enhanced",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.nuvio.media_nuvio": {
+      "name": "Nuvio",
+      "variantID": "nuvio",
+      "modName": "",
+      "crackedBy": "",
+      "developerName": "Nuvio",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.facebook.Facebook_facebook_glow": {
+      "name": "Facebook Glow",
+      "variantID": "facebook_glow",
+      "modName": "Facebook Glow",
+      "crackedBy": "",
+      "developerName": "Facebook",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.mobilefootie.fotmobpro_fotmob": {
+      "name": "FotMob",
+      "variantID": "fotmob",
+      "modName": "noads",
+      "crackedBy": "",
+      "developerName": "Mobilefootie",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "com.firecore.infuse_infuse": {
+      "name": "Infuse",
+      "variantID": "infuse",
+      "modName": "Plus v8.5.by.Ashraq",
+      "crackedBy": "",
+      "developerName": "Firecore",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    },
+    "app.swiftgram.ios_swiftgram": {
+      "name": "Swiftgram",
+      "variantID": "swiftgram",
+      "modName": "TGExtra .@ipavault",
+      "crackedBy": "",
+      "developerName": "Swiftgram",
+      "category": "Other",
+      "localizedDescription": "",
+      "featured": false
+    }
+  }
 }
