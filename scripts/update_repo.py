@@ -482,48 +482,50 @@ def build_display_name(app_name, mod_name):
     if not mod_name:
         return app_name
 
-
     mod = mod_name.lower()
+
+    base_app = app_name.split()[0]
 
 
     # Special replacements
+
     if "eeveespotify" in mod:
-        return "EeveeSpotify"
+        return "Spotify EeveeSpotify"
 
 
     if "ytplusm" in mod:
-        return f"{app_name.split()[0]} YTPlus M"
+        return f"{base_app} YTPlusM"
 
 
     if "ytplus" in mod:
-        return f"{app_name.split()[0]} YTPlus"
+        return f"{base_app} YTPlus"
 
 
     if "ytkace" in mod:
-        return f"{app_name.split()[0]} YTKACE"
+        return f"{base_app} YTKACE"
+
+
+    if "ytkillerplus" in mod:
+        return f"{base_app} YTKillerPlus"
 
 
     if "glow" in mod:
-        if "glow" in app_name.lower():
-            return app_name
-        return f"{app_name} Glow"
+        return f"{base_app} Glow"
 
 
     if "enhanced" in mod:
-        if "enhanced" in app_name.lower():
-            return app_name
-        return f"{app_name} Enhanced"
+        return f"{base_app} Enhanced"
 
 
     if "tgextra" in mod:
-        return f"{app_name.split()[0]} TGExtra"
+        return f"{base_app} TGExtra"
 
 
     if "plus" in mod:
-        if "plus" in app_name.lower():
-            return app_name
-        return f"{app_name} Plus"
+        return f"{base_app} Plus"
 
+
+    # fallback
 
     clean_mod = (
         mod_name
@@ -533,7 +535,7 @@ def build_display_name(app_name, mod_name):
     )
 
 
-    return f"{app_name} {clean_mod}"
+    return f"{base_app} {clean_mod}"
     
 def get_display_name(custom, app_name, mod_name):
 
