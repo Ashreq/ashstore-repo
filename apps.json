@@ -173,6 +173,40 @@
       "size": 81676827,
       "sha256": "8ccdf3551b11e060cdfe337e33530232b6a899704873727f1b71d28c3e2346c4",
       "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/app_swiftgram_ios_swiftgram.png"
+    },
+    {
+      "name": "YouTube",
+      "variantID": "YTKACE",
+      "modName": "",
+      "crackedBy": "",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "",
+      "version": "21.31.3",
+      "versionDate": "2026-08-03",
+      "versionDescription": "",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YTPlusM_21.31.3_5.2.2.tg%40tubevault.ipa",
+      "size": 133357787,
+      "sha256": "8d4fe82447fe35056ebc9a2962b9ce531fd581926f471c4bca88146fc5aae22f",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_YTKACE.png"
+    },
+    {
+      "name": "YouTube",
+      "variantID": "ytplus_cracked.tg@tubevault",
+      "modName": "Ytplus Cracked.Tg@Tubevault",
+      "crackedBy": "",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Google",
+      "category": "Other",
+      "localizedDescription": "YouTube v21.31.3",
+      "version": "21.31.3",
+      "versionDate": "2026-08-03",
+      "versionDescription": "Downloading does not work on this version of YouTube No Bonus Tweaks Sidestore is supported",
+      "downloadURL": "https://github.com/Ashreq/ashstore-repo/releases/download/v1.0.8/YouTube_v21.31.3_YTPlus_v5.2.2_cracked.tg%40tubevault.ipa",
+      "size": 142219559,
+      "sha256": "99d3847be6653d58723d1465c0fc4ab87079d341b3a80973e9c1647d4cffdb38",
+      "iconURL": "https://raw.githubusercontent.com/Ashreq/ashstore-repo/main/icons/com_google_ios_youtube_ytplus_cracked_tg@tubevault.png"
     }
   ]
 }
