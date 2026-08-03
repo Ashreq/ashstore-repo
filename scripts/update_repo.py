@@ -275,6 +275,48 @@ def get_release_description(asset_name, release_notes):
                 )[1].strip()
 
     return ""
+
+def get_version_description(asset_name, release_notes):
+
+    if not release_notes:
+        return ""
+
+    asset_key = asset_name.replace(
+        ".ipa",
+        ""
+    )
+
+    lines = release_notes.splitlines()
+
+    found = False
+    collecting = False
+    description = []
+
+    for line in lines:
+
+        line = line.strip()
+
+        if line == f"[{asset_key}]":
+            found = True
+            continue
+
+        if found:
+
+            if line.startswith("[") and line.endswith("]"):
+                break
+
+            if line.lower().startswith(
+                "version description:"
+            ):
+                collecting = True
+                continue
+
+            if collecting:
+
+                if line:
+                    description.append(line)
+
+    return " ".join(description)
     
 def process_app(
         asset,
@@ -377,6 +419,11 @@ def process_app(
         ipa_path
     )
 
+    version_description = get_version_description(
+       asset["name"],
+       release_notes
+    )
+
     release_description = get_release_description(
         asset["name"],
         release_notes
@@ -431,7 +478,12 @@ def process_app(
             ),
 
         "versionDescription":
-            release_notes,
+            version_description,
+            if version_description
+            else custom.get(
+                "versionDescription",
+                ""
+            ),
 
         "downloadURL":
             asset["browser_download_url"],
