@@ -470,31 +470,56 @@ def detect_mod_name_new(asset_name, app_name):
 def build_display_name(app_name, mod_name):
 
     if not mod_name:
-
         return app_name
 
 
-    special = {
-
-        "spotify eeveespotify":
-            "EeveeSpotify"
-
-    }
+    mod = mod_name.lower()
 
 
-    combined = f"{app_name} {mod_name}"
+    # Special replacements
+    if "eeveespotify" in mod:
+        return "EeveeSpotify"
 
 
-    key = combined.lower()
+    if "ytplusm" in mod:
+        return f"{app_name} YTPlus M"
 
 
-    if key in special:
+    if "ytplus" in mod:
+        return f"{app_name} YTPlus"
 
-        return special[key]
+
+    if "ytkace" in mod:
+        return f"{app_name} YTKACE"
 
 
-    return combined
+    if "glow" in mod:
+        return f"{app_name} Glow"
 
+
+    if "enhanced" in mod:
+        return f"{app_name} Enhanced"
+
+
+    if "tgextra" in mod:
+        return f"{app_name} TGExtra"
+
+
+    if "plus" in mod:
+        return f"{app_name} Plus"
+
+
+    # fallback
+    clean_mod = (
+        mod_name
+        .replace("_", " ")
+        .split()[0]
+        .title()
+    )
+
+
+    return f"{app_name} {clean_mod}"
+    
 def process_app(
         asset,
         release_notes,
